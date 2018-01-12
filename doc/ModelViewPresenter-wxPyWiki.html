@@ -1,0 +1,547 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="index,nofollow">
+
+<title>ModelViewPresenter - wxPyWiki</title>
+<script type="text/javascript" src="ModelViewPresenter-wxPyWiki_files/common.js"></script>
+
+<script type="text/javascript">
+<!--
+var search_hint = "Search";
+//-->
+</script>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="ModelViewPresenter-wxPyWiki_files/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="ModelViewPresenter-wxPyWiki_files/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="ModelViewPresenter-wxPyWiki_files/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="projection" href="ModelViewPresenter-wxPyWiki_files/projection.css">
+
+<!-- css only for MS IE6/IE7 browsers -->
+<!--[if lt IE 8]>
+   <link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/static/modernized_rpd/css/msie.css">
+<![endif]-->
+
+
+<link rel="alternate" title="wxPyWiki: ModelViewPresenter" href="https://wiki.wxpython.org/action/rss_rc/ModelViewPresenter?diffs=1&amp;show_att=1&amp;action=rss_rc&amp;unique=0&amp;page=ModelViewPresenter&amp;ddiffs=1" type="application/rss+xml">
+
+
+<link rel="Start" href="https://wiki.wxpython.org/FrontPage">
+<link rel="Alternate" title="Wiki Markup" href="https://wiki.wxpython.org/action/raw/ModelViewPresenter?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="https://wiki.wxpython.org/action/print/ModelViewPresenter?action=print">
+<link rel="Appendix" title="albums.pyw" href="https://wiki.wxpython.org/ModelViewPresenter?action=AttachFile&amp;do=view&amp;target=albums.pyw">
+<link rel="Appendix" title="interactors.py" href="https://wiki.wxpython.org/ModelViewPresenter?action=AttachFile&amp;do=view&amp;target=interactors.py">
+<link rel="Appendix" title="mock_objects.py" href="https://wiki.wxpython.org/ModelViewPresenter?action=AttachFile&amp;do=view&amp;target=mock_objects.py">
+<link rel="Appendix" title="models.py" href="https://wiki.wxpython.org/ModelViewPresenter?action=AttachFile&amp;do=view&amp;target=models.py">
+<link rel="Appendix" title="mvp.png" href="https://wiki.wxpython.org/ModelViewPresenter?action=AttachFile&amp;do=view&amp;target=mvp.png">
+<link rel="Appendix" title="mvp.zip" href="https://wiki.wxpython.org/ModelViewPresenter?action=AttachFile&amp;do=view&amp;target=mvp.zip">
+<link rel="Appendix" title="mvp2.png" href="https://wiki.wxpython.org/ModelViewPresenter?action=AttachFile&amp;do=view&amp;target=mvp2.png">
+<link rel="Appendix" title="mvp2.zip" href="https://wiki.wxpython.org/ModelViewPresenter?action=AttachFile&amp;do=view&amp;target=mvp2.zip">
+<link rel="Appendix" title="package.zip" href="https://wiki.wxpython.org/ModelViewPresenter?action=AttachFile&amp;do=view&amp;target=package.zip">
+<link rel="Appendix" title="presenters.py" href="https://wiki.wxpython.org/ModelViewPresenter?action=AttachFile&amp;do=view&amp;target=presenters.py">
+<link rel="Appendix" title="test_presenters.py" href="https://wiki.wxpython.org/ModelViewPresenter?action=AttachFile&amp;do=view&amp;target=test_presenters.py">
+<link rel="Appendix" title="views.py" href="https://wiki.wxpython.org/ModelViewPresenter?action=AttachFile&amp;do=view&amp;target=views.py">
+<link rel="Search" href="https://wiki.wxpython.org/FindPage">
+<link rel="Index" href="https://wiki.wxpython.org/TitleIndex">
+<link rel="Glossary" href="https://wiki.wxpython.org/WordIndex">
+<link rel="Help" href="https://wiki.wxpython.org/HelpOnFormatting">
+</head>
+
+<body dir="ltr" lang="en">
+
+<div id="header">
+
+<form id="searchform" method="get" action="/ModelViewPresenter">
+<div>
+<input name="action" value="fullsearch" type="hidden">
+<input name="context" value="180" type="hidden">
+<label for="searchinput" style="display: none;">Search:</label>
+<input id="searchinput" name="value" value="Search" size="20" onfocus="searchFocus(this)" onblur="searchBlur(this)" onkeyup="searchChange(this)" onchange="searchChange(this)" alt="Search" type="text">
+<input id="titlesearch" name="titlesearch" value="Titles" alt="Search Titles" type="submit">
+<input id="fullsearch" name="fullsearch" value="Text" alt="Search Full Text" type="submit">
+</div>
+</form>
+<script type="text/javascript">
+<!--// Initialize search form
+var f = document.getElementById('searchform');
+f.getElementsByTagName('label')[0].style.display = 'none';
+var e = document.getElementById('searchinput');
+searchChange(e);
+searchBlur(e);
+//-->
+</script>
+
+<div id="logo"><a href="https://wiki.wxpython.org/FrontPage"><img src="ModelViewPresenter-wxPyWiki_files/wxPyWiki.png" alt="wxPyWiki"></a></div>
+<div id="username"><a href="https://wiki.wxpython.org/action/login/ModelViewPresenter?action=login" id="login" rel="nofollow">Login</a></div>
+<h1 id="locationline">
+
+<span id="pagelocation"><a href="https://wiki.wxpython.org/ModelViewPresenter">ModelViewPresenter</a></span>
+</h1>
+
+
+<ul id="navibar">
+<li class="wikilink"><a href="https://wiki.wxpython.org/FrontPage">FrontPage</a></li><li class="wikilink"><a href="https://wiki.wxpython.org/RecentChanges">RecentChanges</a></li><li class="wikilink"><a href="https://wiki.wxpython.org/FindPage">FindPage</a></li><li class="wikilink"><a href="https://wiki.wxpython.org/HelpContents">HelpContents</a></li><li class="current"><a href="https://wiki.wxpython.org/ModelViewPresenter">ModelViewPresenter</a></li>
+</ul>
+
+<div id="pageline"><hr style="display:none;"></div>
+
+<ul class="editbar"><li><span class="disabled">Immutable Page</span></li><li class="toggleCommentsButton" style="display:none;"><a href="#" class="nbcomment" onclick="toggleComments();return false;">Comments</a></li><li><a class="nbinfo" href="https://wiki.wxpython.org/action/info/ModelViewPresenter?action=info" rel="nofollow">Info</a></li><li><a class="nbattachments" href="https://wiki.wxpython.org/action/AttachFile/ModelViewPresenter?action=AttachFile" rel="nofollow">Attachments</a></li><li>
+<form class="actionsmenu" method="GET" action="/ModelViewPresenter">
+<div>
+    
+    <select name="action" onchange="if ((this.selectedIndex != 0) &amp;&amp;
+                      (this.options[this.selectedIndex].disabled == false)) {
+                this.form.submit();
+            }
+            this.selectedIndex = 0;">
+        <option value="show" selected="selected">More Actions:</option><option value="raw">Raw Text</option>
+<option value="print">Print View</option>
+<option value="RenderAsDocbook">Render as Docbook</option>
+<option value="refresh">Delete Cache</option>
+<option value="show" disabled="disabled" class="disabled">------------------------</option>
+<option value="SpellCheck">Check Spelling</option>
+<option value="LikePages">Like Pages</option>
+<option value="LocalSiteMap">Local Site Map</option>
+<option value="show" disabled="disabled" class="disabled">------------------------</option>
+<option value="RenamePage" disabled="disabled" class="disabled">Rename Page</option>
+<option value="DeletePage" disabled="disabled" class="disabled">Delete Page</option>
+<option value="show" disabled="disabled" class="disabled">------------------------</option>
+<option value="show" disabled="disabled" class="disabled">Subscribe User</option>
+<option value="show" disabled="disabled" class="disabled">------------------------</option>
+<option value="show" disabled="disabled" class="disabled">Remove Spam</option>
+<option value="show" disabled="disabled" class="disabled">Revert to this revision</option>
+<option value="PackagePages">Package Pages</option>
+<option value="SyncPages">Sync Pages</option>
+<option value="show" disabled="disabled" class="disabled">------------------------</option>
+<option value="Load">Load</option>
+<option value="Save">Save</option>
+<option value="SlideShow">SlideShow</option>
+    </select>
+    
+    
+</div>
+<script type="text/javascript">
+<!--// Init menu
+actionsMenuInit('More Actions:');
+//-->
+</script>
+</form>
+</li></ul>
+
+</div>
+
+<div id="page" dir="ltr" lang="en">
+<div dir="ltr" id="content" lang="en"><span class="anchor" id="top"></span>
+<span class="anchor" id="line-1"></span><p class="line867">
+</p><h2 id="Foreword">Foreword</h2>
+<span class="anchor" id="line-2"></span><span class="anchor" id="line-3"></span><p class="line867">ModelViewPresenter is a derivative of the <a href="https://wiki.wxpython.org/ModelViewController">ModelViewController</a> Pattern. Its aim is to provide a cleaner implementation of the Observer connection between Application Model and view. <span class="anchor" id="line-4"></span>For more information about this pattern check <a class="http" href="http://c2.com/cgi/wiki?ModelViewPresenter">http://c2.com/cgi/wiki?ModelViewPresenter</a> and <a class="http" href="http://www.martinfowler.com/eaaDev/ModelViewPresenter.html">http://www.martinfowler.com/eaaDev/ModelViewPresenter.html</a>.  The original Taligent article is still available at <a class="http" href="http://www.oodesign.com.br/forum/index.php?act=Attach&amp;type=post&amp;id=74">http://www.oodesign.com.br/forum/index.php?act=Attach&amp;type=post&amp;id=74</a>.  There is also a paper titled "Presenter First" at <a class="http" href="http://atomicobject.com/media/files/PresenterFirst.pdf">http://atomicobject.com/media/files/PresenterFirst.pdf</a>,
+ which presents a pattern and process for test-driven development (TDD) 
+of GUI apps structured with MVP.  (Caveat: I've only briefly scanned the
+ paper, and don't know whether it will warrant the link on closer 
+inspection. -- Don Dwiggins) <span class="anchor" id="line-5"></span><span class="anchor" id="line-6"></span></p><p class="line862">Most
+ of the following information is an adaptation of Martin Fowler's MVP 
+page to wxPython. A lot of the text is just Copy&amp;Paste.  <span class="anchor" id="line-7"></span><span class="anchor" id="line-8"></span></p><p class="line867">
+</p><h2 id="Introduction">Introduction</h2>
+<span class="anchor" id="line-9"></span><span class="anchor" id="line-10"></span><p class="line874">Model
+ View Presenter separates the behavior of the presentation out into a 
+separate presenter class. Any user events are forwarded to the presenter
+ and the presenter manipulates the state of the view. As well as 
+separating the responsibilities, this also allows the behavior to be 
+tested without the UI, and for different UI controls to be used with the
+ same basic behavior. <span class="anchor" id="line-11"></span><span class="anchor" id="line-12"></span></p><p class="line867">
+</p><h2 id="How_It_Works">How It Works</h2>
+<span class="anchor" id="line-13"></span><span class="anchor" id="line-14"></span><p class="line874">The
+ heart of Model View Presenter is to pull all the behavior of the 
+presentation out of view and place it in a separate presenter class. The
+ resulting view will by very dumb - little more than a holder for the 
+gui controls themselves. In this way the separation is very much the 
+same as the classic separation of Model View Controller. <span class="anchor" id="line-15"></span><span class="anchor" id="line-16"></span></p><p class="line874">The
+ difference between MVC and MVP is that in MVP the presenter does not 
+handles the GUI events directly as the controller does in MVC but 
+through delegation via the interactor. This in my view allows easier 
+testing of the presenter. <span class="anchor" id="line-17"></span><span class="anchor" id="line-18"></span></p><p class="line867">
+</p><h2 id="Example:_Album_Window">Example: Album Window</h2>
+<span class="anchor" id="line-19"></span><span class="anchor" id="line-20"></span><p class="line874">Here is an example: <span class="anchor" id="line-21"></span><span class="anchor" id="line-22"></span></p><p class="line867"><img alt="mvp.png" class="attachment" src="ModelViewPresenter-wxPyWiki_files/ModelViewPresenter.png" title="mvp.png"> <span class="anchor" id="line-23"></span><span class="anchor" id="line-24"></span></p><p class="line874">The code for model is just a simple data object. <span class="anchor" id="line-25"></span><span class="anchor" id="line-26"></span></p><p class="line867"><span class="anchor" id="line-27"></span><span class="anchor" id="line-28"></span><span class="anchor" id="line-29"></span><span class="anchor" id="line-30"></span><span class="anchor" id="line-31"></span><span class="anchor" id="line-32"></span><span class="anchor" id="line-33"></span><span class="anchor" id="line-34"></span><span class="anchor" id="line-1-1"></span></p><div class="highlight python"><div class="codearea" dir="ltr" lang="en">
+<script type="text/javascript">
+function isnumbered(obj) {
+  return obj.childNodes.length && obj.firstChild.childNodes.length && obj.firstChild.firstChild.className == 'LineNumber';
+}
+function nformat(num,chrs,add) {
+  var nlen = Math.max(0,chrs-(''+num).length), res = '';
+  while (nlen>0) { res += ' '; nlen-- }
+  return res+num+add;
+}
+function addnumber(did, nstart, nstep) {
+  var c = document.getElementById(did), l = c.firstChild, n = 1;
+  if (!isnumbered(c)) {
+    if (typeof nstart == 'undefined') nstart = 1;
+    if (typeof nstep  == 'undefined') nstep = 1;
+    var n = nstart;
+    while (l != null) {
+      if (l.tagName == 'SPAN') {
+        var s = document.createElement('SPAN');
+        var a = document.createElement('A');
+        s.className = 'LineNumber';
+        a.appendChild(document.createTextNode(nformat(n,4,'')));
+        a.href = '#' + did + '_' + n;
+        s.appendChild(a);
+        s.appendChild(document.createTextNode(' '));
+        n += nstep;
+        if (l.childNodes.length) {
+          l.insertBefore(s, l.firstChild);
+        }
+        else {
+          l.appendChild(s);
+        }
+      }
+      l = l.nextSibling;
+    }
+  }
+  return false;
+}
+function remnumber(did) {
+  var c = document.getElementById(did), l = c.firstChild;
+  if (isnumbered(c)) {
+    while (l != null) {
+      if (l.tagName == 'SPAN' && l.firstChild.className == 'LineNumber') l.removeChild(l.firstChild);
+      l = l.nextSibling;
+    }
+  }
+  return false;
+}
+function togglenumber(did, nstart, nstep) {
+  var c = document.getElementById(did);
+  if (isnumbered(c)) {
+    remnumber(did);
+  } else {
+    addnumber(did,nstart,nstep);
+  }
+  return false;
+}
+</script>
+
+<script type="text/javascript">
+document.write('<a href="#" onclick="return togglenumber(\'CA-b382d993c98626c0dc16aaa01580d3d29bdec776\', 1, 1);" \
+                class="codenumbers">Toggle line numbers<\/a>');
+</script><a href="#" onclick="return togglenumber('CA-b382d993c98626c0dc16aaa01580d3d29bdec776', 1, 1);" class="codenumbers">Toggle line numbers</a>
+<pre dir="ltr" id="CA-b382d993c98626c0dc16aaa01580d3d29bdec776" lang="en"><span class="line"><span class="LineNumber"><a href="#CA-b382d993c98626c0dc16aaa01580d3d29bdec776_1">   1</a> </span><span class="LineAnchor" id="CA-b382d993c98626c0dc16aaa01580d3d29bdec776_1"></span><span class="anchor" id="line-1-2"></span><span class="ResWord">class</span> <span class="ID">Album</span>(<span class="ResWord">object</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-b382d993c98626c0dc16aaa01580d3d29bdec776_2">   2</a> </span><span class="LineAnchor" id="CA-b382d993c98626c0dc16aaa01580d3d29bdec776_2"></span><span class="anchor" id="line-2-1"></span>    <span class="ResWord">def</span> <span class="ID">__init__</span>(<span class="ResWord">self</span>, <span class="ID">artist</span>, <span class="ID">title</span>, <span class="ID">isClassical</span>=<span class="ResWord">False</span>, <span class="ID">composer</span>=<span class="ResWord">None</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-b382d993c98626c0dc16aaa01580d3d29bdec776_3">   3</a> </span><span class="LineAnchor" id="CA-b382d993c98626c0dc16aaa01580d3d29bdec776_3"></span><span class="anchor" id="line-3-1"></span>        <span class="ResWord">self</span>.<span class="ID">artist</span> = <span class="ID">artist</span></span>
+<span class="line"><span class="LineNumber"><a href="#CA-b382d993c98626c0dc16aaa01580d3d29bdec776_4">   4</a> </span><span class="LineAnchor" id="CA-b382d993c98626c0dc16aaa01580d3d29bdec776_4"></span><span class="anchor" id="line-4-1"></span>        <span class="ResWord">self</span>.<span class="ID">title</span> = <span class="ID">title</span></span>
+<span class="line"><span class="LineNumber"><a href="#CA-b382d993c98626c0dc16aaa01580d3d29bdec776_5">   5</a> </span><span class="LineAnchor" id="CA-b382d993c98626c0dc16aaa01580d3d29bdec776_5"></span><span class="anchor" id="line-5-1"></span>        <span class="ResWord">self</span>.<span class="ID">isClassical</span> = <span class="ID">isClassical</span></span>
+<span class="line"><span class="LineNumber"><a href="#CA-b382d993c98626c0dc16aaa01580d3d29bdec776_6">   6</a> </span><span class="LineAnchor" id="CA-b382d993c98626c0dc16aaa01580d3d29bdec776_6"></span><span class="anchor" id="line-6-1"></span>        <span class="ResWord">self</span>.<span class="ID">composer</span> = <span class="ID">composer</span></span>
+</pre></div></div><span class="anchor" id="line-35"></span><span class="anchor" id="line-36"></span><p class="line874">You start the application by creating a presenter. <span class="anchor" id="line-37"></span><span class="anchor" id="line-38"></span></p><p class="line867"><span class="anchor" id="line-39"></span><span class="anchor" id="line-40"></span><span class="anchor" id="line-41"></span><span class="anchor" id="line-42"></span><span class="anchor" id="line-43"></span><span class="anchor" id="line-44"></span><span class="anchor" id="line-45"></span><span class="anchor" id="line-46"></span><span class="anchor" id="line-47"></span><span class="anchor" id="line-48"></span><span class="anchor" id="line-1-3"></span></p><div class="highlight python"><div class="codearea" dir="ltr" lang="en">
+<script type="text/javascript">
+document.write('<a href="#" onclick="return togglenumber(\'CA-2c7a35b5fc45b7acb0c9ec4ff5e73a5ef752852c\', 1, 1);" \
+                class="codenumbers">Toggle line numbers<\/a>');
+</script><a href="#" onclick="return togglenumber('CA-2c7a35b5fc45b7acb0c9ec4ff5e73a5ef752852c', 1, 1);" class="codenumbers">Toggle line numbers</a>
+<pre dir="ltr" id="CA-2c7a35b5fc45b7acb0c9ec4ff5e73a5ef752852c" lang="en"><span class="line"><span class="LineNumber"><a href="#CA-2c7a35b5fc45b7acb0c9ec4ff5e73a5ef752852c_1">   1</a> </span><span class="LineAnchor" id="CA-2c7a35b5fc45b7acb0c9ec4ff5e73a5ef752852c_1"></span><span class="anchor" id="line-1-4"></span><span class="ResWord">class</span> <span class="ID">AlbumPresenter</span>(<span class="ResWord">object</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-2c7a35b5fc45b7acb0c9ec4ff5e73a5ef752852c_2">   2</a> </span><span class="LineAnchor" id="CA-2c7a35b5fc45b7acb0c9ec4ff5e73a5ef752852c_2"></span><span class="anchor" id="line-2-2"></span>    <span class="ResWord">def</span> <span class="ID">__init__</span>(<span class="ResWord">self</span>, <span class="ID">albums</span>, <span class="ID">view</span>, <span class="ID">interactor</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-2c7a35b5fc45b7acb0c9ec4ff5e73a5ef752852c_3">   3</a> </span><span class="LineAnchor" id="CA-2c7a35b5fc45b7acb0c9ec4ff5e73a5ef752852c_3"></span><span class="anchor" id="line-3-2"></span>        <span class="ResWord">self</span>.<span class="ID">albums</span> = <span class="ID">albums</span></span>
+<span class="line"><span class="LineNumber"><a href="#CA-2c7a35b5fc45b7acb0c9ec4ff5e73a5ef752852c_4">   4</a> </span><span class="LineAnchor" id="CA-2c7a35b5fc45b7acb0c9ec4ff5e73a5ef752852c_4"></span><span class="anchor" id="line-4-2"></span>        <span class="ResWord">self</span>.<span class="ID">view</span> = <span class="ID">view</span></span>
+<span class="line"><span class="LineNumber"><a href="#CA-2c7a35b5fc45b7acb0c9ec4ff5e73a5ef752852c_5">   5</a> </span><span class="LineAnchor" id="CA-2c7a35b5fc45b7acb0c9ec4ff5e73a5ef752852c_5"></span><span class="anchor" id="line-5-2"></span>        <span class="ID">interactor</span>.<span class="ID">Install</span>(<span class="ResWord">self</span>, <span class="ID">view</span>)</span>
+<span class="line"><span class="LineNumber"><a href="#CA-2c7a35b5fc45b7acb0c9ec4ff5e73a5ef752852c_6">   6</a> </span><span class="LineAnchor" id="CA-2c7a35b5fc45b7acb0c9ec4ff5e73a5ef752852c_6"></span><span class="anchor" id="line-6-2"></span>        <span class="ResWord">self</span>.<span class="ID">isListening</span> = <span class="ResWord">True</span></span>
+<span class="line"><span class="LineNumber"><a href="#CA-2c7a35b5fc45b7acb0c9ec4ff5e73a5ef752852c_7">   7</a> </span><span class="LineAnchor" id="CA-2c7a35b5fc45b7acb0c9ec4ff5e73a5ef752852c_7"></span><span class="anchor" id="line-7-1"></span>        <span class="ResWord">self</span>.<span class="ID">initView</span>()</span>
+<span class="line"><span class="LineNumber"><a href="#CA-2c7a35b5fc45b7acb0c9ec4ff5e73a5ef752852c_8">   8</a> </span><span class="LineAnchor" id="CA-2c7a35b5fc45b7acb0c9ec4ff5e73a5ef752852c_8"></span><span class="anchor" id="line-8-1"></span>        <span class="ID">view</span>.<span class="ID">start</span>()</span>
+</pre></div></div><span class="anchor" id="line-49"></span><span class="anchor" id="line-50"></span><p class="line874">The View is built inside a wx.Frame <span class="anchor" id="line-51"></span><span class="anchor" id="line-52"></span></p><p class="line867"><span class="anchor" id="line-53"></span><span class="anchor" id="line-54"></span><span class="anchor" id="line-55"></span><span class="anchor" id="line-56"></span><span class="anchor" id="line-57"></span><span class="anchor" id="line-58"></span><span class="anchor" id="line-59"></span><span class="anchor" id="line-60"></span><span class="anchor" id="line-1-5"></span></p><div class="highlight python"><div class="codearea" dir="ltr" lang="en">
+<script type="text/javascript">
+document.write('<a href="#" onclick="return togglenumber(\'CA-cac614242bc23f01d8dc9e79872a3f54a3c08edd\', 1, 1);" \
+                class="codenumbers">Toggle line numbers<\/a>');
+</script><a href="#" onclick="return togglenumber('CA-cac614242bc23f01d8dc9e79872a3f54a3c08edd', 1, 1);" class="codenumbers">Toggle line numbers</a>
+<pre dir="ltr" id="CA-cac614242bc23f01d8dc9e79872a3f54a3c08edd" lang="en"><span class="line"><span class="LineNumber"><a href="#CA-cac614242bc23f01d8dc9e79872a3f54a3c08edd_1">   1</a> </span><span class="LineAnchor" id="CA-cac614242bc23f01d8dc9e79872a3f54a3c08edd_1"></span><span class="anchor" id="line-1-6"></span><span class="ResWord">class</span> <span class="ID">AlbumWindow</span>(<span class="ID">wx</span>.<span class="ID">Frame</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-cac614242bc23f01d8dc9e79872a3f54a3c08edd_2">   2</a> </span><span class="LineAnchor" id="CA-cac614242bc23f01d8dc9e79872a3f54a3c08edd_2"></span><span class="anchor" id="line-2-3"></span>    <span class="ResWord">def</span> <span class="ID">__init__</span>(<span class="ResWord">self</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-cac614242bc23f01d8dc9e79872a3f54a3c08edd_3">   3</a> </span><span class="LineAnchor" id="CA-cac614242bc23f01d8dc9e79872a3f54a3c08edd_3"></span><span class="anchor" id="line-3-3"></span>        <span class="ResWord">self</span>.<span class="ID">app</span> = <span class="ID">wx</span>.<span class="ID">App</span>(<span class="Number">0</span>)</span>
+<span class="line"><span class="LineNumber"><a href="#CA-cac614242bc23f01d8dc9e79872a3f54a3c08edd_4">   4</a> </span><span class="LineAnchor" id="CA-cac614242bc23f01d8dc9e79872a3f54a3c08edd_4"></span><span class="anchor" id="line-4-3"></span>        <span class="ID">wx</span>.<span class="ID">Frame</span>.<span class="ID">__init__</span>(<span class="ResWord">self</span>, <span class="ResWord">None</span>)</span>
+<span class="line"><span class="LineNumber"><a href="#CA-cac614242bc23f01d8dc9e79872a3f54a3c08edd_5">   5</a> </span><span class="LineAnchor" id="CA-cac614242bc23f01d8dc9e79872a3f54a3c08edd_5"></span><span class="anchor" id="line-5-3"></span>        <span class="ResWord">self</span>.<span class="ID">SetBackgroundColour</span>(<span class="String">"</span><span class="String">lightgray</span><span class="String">"</span>)</span>
+<span class="line"><span class="LineNumber"><a href="#CA-cac614242bc23f01d8dc9e79872a3f54a3c08edd_6">   6</a> </span><span class="LineAnchor" id="CA-cac614242bc23f01d8dc9e79872a3f54a3c08edd_6"></span><span class="anchor" id="line-6-3"></span>        ...</span>
+</pre></div></div><span class="anchor" id="line-61"></span><span class="anchor" id="line-62"></span><p class="line874">Before
+ instantiating the Frame we create the wx.App object used by our 
+application and when the view starts we start the Main Loop. In real 
+life you could create the layout using something like wxGlade and 
+inherit one of the generated classes.  <span class="anchor" id="line-63"></span><span class="anchor" id="line-64"></span></p><p class="line874">The
+ presenter is responsible for putting all the data into the window. It 
+does this by pulling data out of the domain class and pushing the data 
+into the window via the view interface. <span class="anchor" id="line-65"></span><span class="anchor" id="line-66"></span></p><p class="line867"><span class="anchor" id="line-67"></span><span class="anchor" id="line-68"></span><span class="anchor" id="line-69"></span><span class="anchor" id="line-70"></span><span class="anchor" id="line-71"></span><span class="anchor" id="line-72"></span><span class="anchor" id="line-73"></span><span class="anchor" id="line-74"></span><span class="anchor" id="line-75"></span><span class="anchor" id="line-76"></span><span class="anchor" id="line-77"></span><span class="anchor" id="line-78"></span><span class="anchor" id="line-79"></span><span class="anchor" id="line-80"></span><span class="anchor" id="line-81"></span><span class="anchor" id="line-82"></span><span class="anchor" id="line-83"></span><span class="anchor" id="line-84"></span><span class="anchor" id="line-85"></span><span class="anchor" id="line-86"></span><span class="anchor" id="line-87"></span><span class="anchor" id="line-88"></span><span class="anchor" id="line-89"></span><span class="anchor" id="line-90"></span><span class="anchor" id="line-91"></span><span class="anchor" id="line-92"></span><span class="anchor" id="line-93"></span><span class="anchor" id="line-94"></span><span class="anchor" id="line-95"></span><span class="anchor" id="line-96"></span><span class="anchor" id="line-97"></span><span class="anchor" id="line-98"></span><span class="anchor" id="line-99"></span><span class="anchor" id="line-1-7"></span></p><div class="highlight python"><div class="codearea" dir="ltr" lang="en">
+<script type="text/javascript">
+document.write('<a href="#" onclick="return togglenumber(\'CA-395585ee377e32ee9336c382bec5b94d4da4299b\', 1, 1);" \
+                class="codenumbers">Toggle line numbers<\/a>');
+</script><a href="#" onclick="return togglenumber('CA-395585ee377e32ee9336c382bec5b94d4da4299b', 1, 1);" class="codenumbers">Toggle line numbers</a>
+<pre dir="ltr" id="CA-395585ee377e32ee9336c382bec5b94d4da4299b" lang="en"><span class="line"><span class="LineNumber"><a href="#CA-395585ee377e32ee9336c382bec5b94d4da4299b_1">   1</a> </span><span class="LineAnchor" id="CA-395585ee377e32ee9336c382bec5b94d4da4299b_1"></span><span class="anchor" id="line-1-8"></span><span class="ResWord">class</span> <span class="ID">AlbumPresenter</span>(<span class="ResWord">object</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-395585ee377e32ee9336c382bec5b94d4da4299b_2">   2</a> </span><span class="LineAnchor" id="CA-395585ee377e32ee9336c382bec5b94d4da4299b_2"></span><span class="anchor" id="line-2-4"></span>    ...</span>
+<span class="line"><span class="LineNumber"><a href="#CA-395585ee377e32ee9336c382bec5b94d4da4299b_3">   3</a> </span><span class="LineAnchor" id="CA-395585ee377e32ee9336c382bec5b94d4da4299b_3"></span><span class="anchor" id="line-3-4"></span>    <span class="ResWord">def</span> <span class="ID">loadViewFromModel</span>(<span class="ResWord">self</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-395585ee377e32ee9336c382bec5b94d4da4299b_4">   4</a> </span><span class="LineAnchor" id="CA-395585ee377e32ee9336c382bec5b94d4da4299b_4"></span><span class="anchor" id="line-4-4"></span>        <span class="ResWord">if</span> <span class="ResWord">self</span>.<span class="ID">isListening</span>:</span>
+<span class="line"><span class="LineNumber"><a href="#CA-395585ee377e32ee9336c382bec5b94d4da4299b_5">   5</a> </span><span class="LineAnchor" id="CA-395585ee377e32ee9336c382bec5b94d4da4299b_5"></span><span class="anchor" id="line-5-4"></span>            <span class="ResWord">self</span>.<span class="ID">isListening</span> = <span class="ResWord">False</span></span>
+<span class="line"><span class="LineNumber"><a href="#CA-395585ee377e32ee9336c382bec5b94d4da4299b_6">   6</a> </span><span class="LineAnchor" id="CA-395585ee377e32ee9336c382bec5b94d4da4299b_6"></span><span class="anchor" id="line-6-4"></span>            <span class="ResWord">self</span>.<span class="ID">refreshAlbumList</span>()</span>
+<span class="line"><span class="LineNumber"><a href="#CA-395585ee377e32ee9336c382bec5b94d4da4299b_7">   7</a> </span><span class="LineAnchor" id="CA-395585ee377e32ee9336c382bec5b94d4da4299b_7"></span><span class="anchor" id="line-7-2"></span>            <span class="ResWord">self</span>.<span class="ID">view</span>.<span class="ID">setTitle</span>(<span class="ResWord">self</span>.<span class="ID">selectedAlbum</span>.<span class="ID">title</span>)</span>
+<span class="line"><span class="LineNumber"><a href="#CA-395585ee377e32ee9336c382bec5b94d4da4299b_8">   8</a> </span><span class="LineAnchor" id="CA-395585ee377e32ee9336c382bec5b94d4da4299b_8"></span><span class="anchor" id="line-8-2"></span>            <span class="ResWord">self</span>.<span class="ID">updateWindowTitle</span>()</span>
+<span class="line"><span class="LineNumber"><a href="#CA-395585ee377e32ee9336c382bec5b94d4da4299b_9">   9</a> </span><span class="LineAnchor" id="CA-395585ee377e32ee9336c382bec5b94d4da4299b_9"></span><span class="anchor" id="line-9-1"></span>            <span class="ResWord">self</span>.<span class="ID">view</span>.<span class="ID">setArtist</span>(<span class="ResWord">self</span>.<span class="ID">selectedAlbum</span>.<span class="ID">artist</span>)</span>
+<span class="line"><span class="LineNumber"><a href="#CA-395585ee377e32ee9336c382bec5b94d4da4299b_10">  10</a> </span><span class="LineAnchor" id="CA-395585ee377e32ee9336c382bec5b94d4da4299b_10"></span><span class="anchor" id="line-10-1"></span>            <span class="ResWord">self</span>.<span class="ID">view</span>.<span class="ID">setClassical</span>(<span class="ResWord">self</span>.<span class="ID">selectedAlbum</span>.<span class="ID">isClassical</span>)</span>
+<span class="line"><span class="LineNumber"><a href="#CA-395585ee377e32ee9336c382bec5b94d4da4299b_11">  11</a> </span><span class="LineAnchor" id="CA-395585ee377e32ee9336c382bec5b94d4da4299b_11"></span><span class="anchor" id="line-11-1"></span>            <span class="ResWord">if</span> <span class="ResWord">self</span>.<span class="ID">selectedAlbum</span>.<span class="ID">isClassical</span>:</span>
+<span class="line"><span class="LineNumber"><a href="#CA-395585ee377e32ee9336c382bec5b94d4da4299b_12">  12</a> </span><span class="LineAnchor" id="CA-395585ee377e32ee9336c382bec5b94d4da4299b_12"></span><span class="anchor" id="line-12-1"></span>                <span class="ResWord">self</span>.<span class="ID">view</span>.<span class="ID">setComposer</span>(<span class="ResWord">self</span>.<span class="ID">selectedAlbum</span>.<span class="ID">composer</span>)</span>
+<span class="line"><span class="LineNumber"><a href="#CA-395585ee377e32ee9336c382bec5b94d4da4299b_13">  13</a> </span><span class="LineAnchor" id="CA-395585ee377e32ee9336c382bec5b94d4da4299b_13"></span><span class="anchor" id="line-13-1"></span>            <span class="ResWord">else</span>:</span>
+<span class="line"><span class="LineNumber"><a href="#CA-395585ee377e32ee9336c382bec5b94d4da4299b_14">  14</a> </span><span class="LineAnchor" id="CA-395585ee377e32ee9336c382bec5b94d4da4299b_14"></span><span class="anchor" id="line-14-1"></span>                <span class="ResWord">self</span>.<span class="ID">view</span>.<span class="ID">setComposer</span>(<span class="String">"</span><span class="String">"</span>)</span>
+<span class="line"><span class="LineNumber"><a href="#CA-395585ee377e32ee9336c382bec5b94d4da4299b_15">  15</a> </span><span class="LineAnchor" id="CA-395585ee377e32ee9336c382bec5b94d4da4299b_15"></span><span class="anchor" id="line-15-1"></span>            <span class="ResWord">self</span>.<span class="ID">view</span>.<span class="ID">setComposerEnabled</span>(<span class="ResWord">self</span>.<span class="ID">selectedAlbum</span>.<span class="ID">isClassical</span>)</span>
+<span class="line"><span class="LineNumber"><a href="#CA-395585ee377e32ee9336c382bec5b94d4da4299b_16">  16</a> </span><span class="LineAnchor" id="CA-395585ee377e32ee9336c382bec5b94d4da4299b_16"></span><span class="anchor" id="line-16-1"></span>            <span class="ResWord">self</span>.<span class="ID">enableApplyAndCancel</span>(<span class="ResWord">False</span>)</span>
+<span class="line"><span class="LineNumber"><a href="#CA-395585ee377e32ee9336c382bec5b94d4da4299b_17">  17</a> </span><span class="LineAnchor" id="CA-395585ee377e32ee9336c382bec5b94d4da4299b_17"></span><span class="anchor" id="line-17-1"></span>            <span class="ResWord">self</span>.<span class="ID">isListening</span> = <span class="ResWord">True</span></span>
+<span class="line"><span class="LineNumber"><a href="#CA-395585ee377e32ee9336c382bec5b94d4da4299b_18">  18</a> </span><span class="LineAnchor" id="CA-395585ee377e32ee9336c382bec5b94d4da4299b_18"></span><span class="anchor" id="line-18-1"></span>            </span>
+<span class="line"><span class="LineNumber"><a href="#CA-395585ee377e32ee9336c382bec5b94d4da4299b_19">  19</a> </span><span class="LineAnchor" id="CA-395585ee377e32ee9336c382bec5b94d4da4299b_19"></span><span class="anchor" id="line-19-1"></span>    <span class="ResWord">def</span> <span class="ID">refreshAlbumList</span>(<span class="ResWord">self</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-395585ee377e32ee9336c382bec5b94d4da4299b_20">  20</a> </span><span class="LineAnchor" id="CA-395585ee377e32ee9336c382bec5b94d4da4299b_20"></span><span class="anchor" id="line-20-1"></span>        <span class="ID">currentAlbum</span> = <span class="ResWord">self</span>.<span class="ID">view</span>.<span class="ID">getSelectedAlbum</span>()</span>
+<span class="line"><span class="LineNumber"><a href="#CA-395585ee377e32ee9336c382bec5b94d4da4299b_21">  21</a> </span><span class="LineAnchor" id="CA-395585ee377e32ee9336c382bec5b94d4da4299b_21"></span><span class="anchor" id="line-21-1"></span>        <span class="ResWord">self</span>.<span class="ID">view</span>.<span class="ID">setAlbums</span>(<span class="ResWord">self</span>.<span class="ID">albums</span>)</span>
+<span class="line"><span class="LineNumber"><a href="#CA-395585ee377e32ee9336c382bec5b94d4da4299b_22">  22</a> </span><span class="LineAnchor" id="CA-395585ee377e32ee9336c382bec5b94d4da4299b_22"></span><span class="anchor" id="line-22-1"></span>        <span class="ResWord">self</span>.<span class="ID">view</span>.<span class="ID">setSelectedAlbum</span>(<span class="ID">currentAlbum</span>)</span>
+<span class="line"><span class="LineNumber"><a href="#CA-395585ee377e32ee9336c382bec5b94d4da4299b_23">  23</a> </span><span class="LineAnchor" id="CA-395585ee377e32ee9336c382bec5b94d4da4299b_23"></span><span class="anchor" id="line-23-1"></span>        <span class="ResWord">self</span>.<span class="ID">selectedAlbum</span> = <span class="ResWord">self</span>.<span class="ID">albums</span>[<span class="ID">currentAlbum</span>]</span>
+<span class="line"><span class="LineNumber"><a href="#CA-395585ee377e32ee9336c382bec5b94d4da4299b_24">  24</a> </span><span class="LineAnchor" id="CA-395585ee377e32ee9336c382bec5b94d4da4299b_24"></span><span class="anchor" id="line-24-1"></span>        </span>
+<span class="line"><span class="LineNumber"><a href="#CA-395585ee377e32ee9336c382bec5b94d4da4299b_25">  25</a> </span><span class="LineAnchor" id="CA-395585ee377e32ee9336c382bec5b94d4da4299b_25"></span><span class="anchor" id="line-25-1"></span>    <span class="ResWord">def</span> <span class="ID">updateWindowTitle</span>(<span class="ResWord">self</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-395585ee377e32ee9336c382bec5b94d4da4299b_26">  26</a> </span><span class="LineAnchor" id="CA-395585ee377e32ee9336c382bec5b94d4da4299b_26"></span><span class="anchor" id="line-26-1"></span>        <span class="ResWord">self</span>.<span class="ID">view</span>.<span class="ID">setWindowTitle</span>(<span class="String">"</span><span class="String">Album: </span><span class="String">"</span> + <span class="ResWord">self</span>.<span class="ID">view</span>.<span class="ID">getTitle</span>())</span>
+<span class="line"><span class="LineNumber"><a href="#CA-395585ee377e32ee9336c382bec5b94d4da4299b_27">  27</a> </span><span class="LineAnchor" id="CA-395585ee377e32ee9336c382bec5b94d4da4299b_27"></span><span class="anchor" id="line-27-1"></span>        </span>
+<span class="line"><span class="LineNumber"><a href="#CA-395585ee377e32ee9336c382bec5b94d4da4299b_28">  28</a> </span><span class="LineAnchor" id="CA-395585ee377e32ee9336c382bec5b94d4da4299b_28"></span><span class="anchor" id="line-28-1"></span>    <span class="ResWord">def</span> <span class="ID">enableApplyAndCancel</span>(<span class="ResWord">self</span>, <span class="ID">enabled</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-395585ee377e32ee9336c382bec5b94d4da4299b_29">  29</a> </span><span class="LineAnchor" id="CA-395585ee377e32ee9336c382bec5b94d4da4299b_29"></span><span class="anchor" id="line-29-1"></span>        <span class="ResWord">self</span>.<span class="ID">view</span>.<span class="ID">setApplyEnabled</span>(<span class="ID">enabled</span>)</span>
+<span class="line"><span class="LineNumber"><a href="#CA-395585ee377e32ee9336c382bec5b94d4da4299b_30">  30</a> </span><span class="LineAnchor" id="CA-395585ee377e32ee9336c382bec5b94d4da4299b_30"></span><span class="anchor" id="line-30-1"></span>        <span class="ResWord">self</span>.<span class="ID">view</span>.<span class="ID">setCancelEnabled</span>(<span class="ID">enabled</span>)</span>
+<span class="line"><span class="LineNumber"><a href="#CA-395585ee377e32ee9336c382bec5b94d4da4299b_31">  31</a> </span><span class="LineAnchor" id="CA-395585ee377e32ee9336c382bec5b94d4da4299b_31"></span><span class="anchor" id="line-31-1"></span>    ...</span>
+</pre></div></div><span class="anchor" id="line-100"></span><span class="anchor" id="line-101"></span><p class="line874">The
+ loadViewFromModel method updates all the items of view. Some of these 
+updates cause events to fire which would cause a recursive trigerring of
+ the update method, so I use a guard around the update method to prevent
+ the recursion. <span class="anchor" id="line-102"></span><span class="anchor" id="line-103"></span></p><p class="line874">The methods in the view allow access to the underlying controls via the fields. <span class="anchor" id="line-104"></span><span class="anchor" id="line-105"></span></p><p class="line867"><span class="anchor" id="line-106"></span><span class="anchor" id="line-107"></span><span class="anchor" id="line-108"></span><span class="anchor" id="line-109"></span><span class="anchor" id="line-110"></span><span class="anchor" id="line-111"></span><span class="anchor" id="line-112"></span><span class="anchor" id="line-113"></span><span class="anchor" id="line-1-9"></span></p><div class="highlight python"><div class="codearea" dir="ltr" lang="en">
+<script type="text/javascript">
+document.write('<a href="#" onclick="return togglenumber(\'CA-adfd837f7096a93a876726da697ac3f1e8afc9c8\', 1, 1);" \
+                class="codenumbers">Toggle line numbers<\/a>');
+</script><a href="#" onclick="return togglenumber('CA-adfd837f7096a93a876726da697ac3f1e8afc9c8', 1, 1);" class="codenumbers">Toggle line numbers</a>
+<pre dir="ltr" id="CA-adfd837f7096a93a876726da697ac3f1e8afc9c8" lang="en"><span class="line"><span class="LineNumber"><a href="#CA-adfd837f7096a93a876726da697ac3f1e8afc9c8_1">   1</a> </span><span class="LineAnchor" id="CA-adfd837f7096a93a876726da697ac3f1e8afc9c8_1"></span><span class="anchor" id="line-1-10"></span><span class="ResWord">class</span> <span class="ID">AlbumWindow</span>(<span class="ID">wx</span>.<span class="ID">Frame</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-adfd837f7096a93a876726da697ac3f1e8afc9c8_2">   2</a> </span><span class="LineAnchor" id="CA-adfd837f7096a93a876726da697ac3f1e8afc9c8_2"></span><span class="anchor" id="line-2-5"></span>    ...</span>
+<span class="line"><span class="LineNumber"><a href="#CA-adfd837f7096a93a876726da697ac3f1e8afc9c8_3">   3</a> </span><span class="LineAnchor" id="CA-adfd837f7096a93a876726da697ac3f1e8afc9c8_3"></span><span class="anchor" id="line-3-5"></span>    <span class="ResWord">def</span> <span class="ID">setClassical</span>(<span class="ResWord">self</span>, <span class="ID">isClassical</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-adfd837f7096a93a876726da697ac3f1e8afc9c8_4">   4</a> </span><span class="LineAnchor" id="CA-adfd837f7096a93a876726da697ac3f1e8afc9c8_4"></span><span class="anchor" id="line-4-5"></span>        <span class="ResWord">self</span>.<span class="ID">classical</span>.<span class="ID">SetValue</span>(<span class="ID">isClassical</span>)</span>
+<span class="line"><span class="LineNumber"><a href="#CA-adfd837f7096a93a876726da697ac3f1e8afc9c8_5">   5</a> </span><span class="LineAnchor" id="CA-adfd837f7096a93a876726da697ac3f1e8afc9c8_5"></span><span class="anchor" id="line-5-5"></span>    <span class="ResWord">def</span> <span class="ID">isClassical</span>(<span class="ResWord">self</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-adfd837f7096a93a876726da697ac3f1e8afc9c8_6">   6</a> </span><span class="LineAnchor" id="CA-adfd837f7096a93a876726da697ac3f1e8afc9c8_6"></span><span class="anchor" id="line-6-5"></span>        <span class="ResWord">return</span> <span class="ResWord">self</span>.<span class="ID">classical</span>.<span class="ID">GetValue</span>()</span>
+</pre></div></div><span class="anchor" id="line-114"></span><span class="anchor" id="line-115"></span><p class="line874">Alternatively the view could be implemented using property objects and use simple assignment/access instead of set/get methods. <span class="anchor" id="line-116"></span><span class="anchor" id="line-117"></span></p><p class="line867"><span class="anchor" id="line-118"></span><span class="anchor" id="line-119"></span><span class="anchor" id="line-120"></span><span class="anchor" id="line-121"></span><span class="anchor" id="line-122"></span><span class="anchor" id="line-123"></span><span class="anchor" id="line-124"></span><span class="anchor" id="line-125"></span><span class="anchor" id="line-126"></span><span class="anchor" id="line-1-11"></span></p><div class="highlight python"><div class="codearea" dir="ltr" lang="en">
+<script type="text/javascript">
+document.write('<a href="#" onclick="return togglenumber(\'CA-206ced9213ecd54ac3ce90054f6af27cda21e26c\', 1, 1);" \
+                class="codenumbers">Toggle line numbers<\/a>');
+</script><a href="#" onclick="return togglenumber('CA-206ced9213ecd54ac3ce90054f6af27cda21e26c', 1, 1);" class="codenumbers">Toggle line numbers</a>
+<pre dir="ltr" id="CA-206ced9213ecd54ac3ce90054f6af27cda21e26c" lang="en"><span class="line"><span class="LineNumber"><a href="#CA-206ced9213ecd54ac3ce90054f6af27cda21e26c_1">   1</a> </span><span class="LineAnchor" id="CA-206ced9213ecd54ac3ce90054f6af27cda21e26c_1"></span><span class="anchor" id="line-1-12"></span><span class="ResWord">class</span> <span class="ID">AlbumWindow</span>(<span class="ID">wx</span>.<span class="ID">Frame</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-206ced9213ecd54ac3ce90054f6af27cda21e26c_2">   2</a> </span><span class="LineAnchor" id="CA-206ced9213ecd54ac3ce90054f6af27cda21e26c_2"></span><span class="anchor" id="line-2-6"></span>    ...</span>
+<span class="line"><span class="LineNumber"><a href="#CA-206ced9213ecd54ac3ce90054f6af27cda21e26c_3">   3</a> </span><span class="LineAnchor" id="CA-206ced9213ecd54ac3ce90054f6af27cda21e26c_3"></span><span class="anchor" id="line-3-6"></span>    <span class="ResWord">def</span> <span class="ID">_setTitle</span>(<span class="ResWord">self</span>, <span class="ID">title</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-206ced9213ecd54ac3ce90054f6af27cda21e26c_4">   4</a> </span><span class="LineAnchor" id="CA-206ced9213ecd54ac3ce90054f6af27cda21e26c_4"></span><span class="anchor" id="line-4-6"></span>        <span class="ResWord">self</span>.<span class="ID">_title</span>.<span class="ID">SetValue</span>(<span class="ID">title</span>)</span>
+<span class="line"><span class="LineNumber"><a href="#CA-206ced9213ecd54ac3ce90054f6af27cda21e26c_5">   5</a> </span><span class="LineAnchor" id="CA-206ced9213ecd54ac3ce90054f6af27cda21e26c_5"></span><span class="anchor" id="line-5-6"></span>    <span class="ResWord">def</span> <span class="ID">_getTitle</span>(<span class="ResWord">self</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-206ced9213ecd54ac3ce90054f6af27cda21e26c_6">   6</a> </span><span class="LineAnchor" id="CA-206ced9213ecd54ac3ce90054f6af27cda21e26c_6"></span><span class="anchor" id="line-6-6"></span>        <span class="ResWord">return</span> <span class="ResWord">self</span>.<span class="ID">_title</span>.<span class="ID">GetValue</span>()</span>
+<span class="line"><span class="LineNumber"><a href="#CA-206ced9213ecd54ac3ce90054f6af27cda21e26c_7">   7</a> </span><span class="LineAnchor" id="CA-206ced9213ecd54ac3ce90054f6af27cda21e26c_7"></span><span class="anchor" id="line-7-3"></span>    <span class="ID">title</span> = <span class="ResWord">property</span>(<span class="ID">_getTitle</span>, <span class="ID">_setTitle</span>)</span>
+</pre></div></div><span class="anchor" id="line-127"></span><p class="line874">then <span class="anchor" id="line-128"></span><span class="anchor" id="line-129"></span><span class="anchor" id="line-130"></span><span class="anchor" id="line-131"></span><span class="anchor" id="line-132"></span><span class="anchor" id="line-133"></span><span class="anchor" id="line-134"></span><span class="anchor" id="line-135"></span><span class="anchor" id="line-136"></span><span class="anchor" id="line-137"></span><span class="anchor" id="line-138"></span><span class="anchor" id="line-139"></span><span class="anchor" id="line-1-13"></span></p><div class="highlight python"><div class="codearea" dir="ltr" lang="en">
+<script type="text/javascript">
+document.write('<a href="#" onclick="return togglenumber(\'CA-3e0697f0cfcb0d28335f0e680c2e8d840980b6a3\', 1, 1);" \
+                class="codenumbers">Toggle line numbers<\/a>');
+</script><a href="#" onclick="return togglenumber('CA-3e0697f0cfcb0d28335f0e680c2e8d840980b6a3', 1, 1);" class="codenumbers">Toggle line numbers</a>
+<pre dir="ltr" id="CA-3e0697f0cfcb0d28335f0e680c2e8d840980b6a3" lang="en"><span class="line"><span class="LineNumber"><a href="#CA-3e0697f0cfcb0d28335f0e680c2e8d840980b6a3_1">   1</a> </span><span class="LineAnchor" id="CA-3e0697f0cfcb0d28335f0e680c2e8d840980b6a3_1"></span><span class="anchor" id="line-1-14"></span><span class="ResWord">class</span> <span class="ID">AlbumPresenter</span>(<span class="ResWord">object</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-3e0697f0cfcb0d28335f0e680c2e8d840980b6a3_2">   2</a> </span><span class="LineAnchor" id="CA-3e0697f0cfcb0d28335f0e680c2e8d840980b6a3_2"></span><span class="anchor" id="line-2-7"></span>    ...</span>
+<span class="line"><span class="LineNumber"><a href="#CA-3e0697f0cfcb0d28335f0e680c2e8d840980b6a3_3">   3</a> </span><span class="LineAnchor" id="CA-3e0697f0cfcb0d28335f0e680c2e8d840980b6a3_3"></span><span class="anchor" id="line-3-7"></span>    <span class="ResWord">def</span> <span class="ID">loadViewFromModel</span>(<span class="ResWord">self</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-3e0697f0cfcb0d28335f0e680c2e8d840980b6a3_4">   4</a> </span><span class="LineAnchor" id="CA-3e0697f0cfcb0d28335f0e680c2e8d840980b6a3_4"></span><span class="anchor" id="line-4-7"></span>        <span class="ResWord">if</span> <span class="ResWord">self</span>.<span class="ID">isListening</span>:</span>
+<span class="line"><span class="LineNumber"><a href="#CA-3e0697f0cfcb0d28335f0e680c2e8d840980b6a3_5">   5</a> </span><span class="LineAnchor" id="CA-3e0697f0cfcb0d28335f0e680c2e8d840980b6a3_5"></span><span class="anchor" id="line-5-7"></span>            ...</span>
+<span class="line"><span class="LineNumber"><a href="#CA-3e0697f0cfcb0d28335f0e680c2e8d840980b6a3_6">   6</a> </span><span class="LineAnchor" id="CA-3e0697f0cfcb0d28335f0e680c2e8d840980b6a3_6"></span><span class="anchor" id="line-6-7"></span>            <span class="ResWord">self</span>.<span class="ID">view</span>.<span class="ID">title</span> = <span class="ResWord">self</span>.<span class="ID">selectedAlbum</span>.<span class="ID">title</span></span>
+<span class="line"><span class="LineNumber"><a href="#CA-3e0697f0cfcb0d28335f0e680c2e8d840980b6a3_7">   7</a> </span><span class="LineAnchor" id="CA-3e0697f0cfcb0d28335f0e680c2e8d840980b6a3_7"></span><span class="anchor" id="line-7-4"></span>    ...</span>
+<span class="line"><span class="LineNumber"><a href="#CA-3e0697f0cfcb0d28335f0e680c2e8d840980b6a3_8">   8</a> </span><span class="LineAnchor" id="CA-3e0697f0cfcb0d28335f0e680c2e8d840980b6a3_8"></span><span class="anchor" id="line-8-3"></span>    <span class="ResWord">def</span> <span class="ID">updateWindowTitle</span>(<span class="ResWord">self</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-3e0697f0cfcb0d28335f0e680c2e8d840980b6a3_9">   9</a> </span><span class="LineAnchor" id="CA-3e0697f0cfcb0d28335f0e680c2e8d840980b6a3_9"></span><span class="anchor" id="line-9-2"></span>        <span class="ResWord">self</span>.<span class="ID">view</span>.<span class="ID">setWindowTitle</span>(<span class="String">"</span><span class="String">Album: </span><span class="String">"</span> + <span class="ResWord">self</span>.<span class="ID">view</span>.<span class="ID">title</span>)</span>
+</pre></div></div><span class="anchor" id="line-140"></span><span class="anchor" id="line-141"></span><span class="anchor" id="line-142"></span><p class="line874">The
+ interactor object is installed from the presenter and it installs all 
+the needed event handlers delegating the event to the presenter. <span class="anchor" id="line-143"></span><span class="anchor" id="line-144"></span></p><p class="line867"><span class="anchor" id="line-145"></span><span class="anchor" id="line-146"></span><span class="anchor" id="line-147"></span><span class="anchor" id="line-148"></span><span class="anchor" id="line-149"></span><span class="anchor" id="line-150"></span><span class="anchor" id="line-151"></span><span class="anchor" id="line-152"></span><span class="anchor" id="line-153"></span><span class="anchor" id="line-154"></span><span class="anchor" id="line-155"></span><span class="anchor" id="line-156"></span><span class="anchor" id="line-157"></span><span class="anchor" id="line-158"></span><span class="anchor" id="line-159"></span><span class="anchor" id="line-160"></span><span class="anchor" id="line-161"></span><span class="anchor" id="line-162"></span><span class="anchor" id="line-163"></span><span class="anchor" id="line-164"></span><span class="anchor" id="line-165"></span><span class="anchor" id="line-166"></span><span class="anchor" id="line-1-15"></span></p><div class="highlight python"><div class="codearea" dir="ltr" lang="en">
+<script type="text/javascript">
+document.write('<a href="#" onclick="return togglenumber(\'CA-c6309d247a7a8a7d30582de68bfab14b1629d197\', 1, 1);" \
+                class="codenumbers">Toggle line numbers<\/a>');
+</script><a href="#" onclick="return togglenumber('CA-c6309d247a7a8a7d30582de68bfab14b1629d197', 1, 1);" class="codenumbers">Toggle line numbers</a>
+<pre dir="ltr" id="CA-c6309d247a7a8a7d30582de68bfab14b1629d197" lang="en"><span class="line"><span class="LineNumber"><a href="#CA-c6309d247a7a8a7d30582de68bfab14b1629d197_1">   1</a> </span><span class="LineAnchor" id="CA-c6309d247a7a8a7d30582de68bfab14b1629d197_1"></span><span class="anchor" id="line-1-16"></span><span class="ResWord">class</span> <span class="ID">AlbumInteractor</span>(<span class="ResWord">object</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-c6309d247a7a8a7d30582de68bfab14b1629d197_2">   2</a> </span><span class="LineAnchor" id="CA-c6309d247a7a8a7d30582de68bfab14b1629d197_2"></span><span class="anchor" id="line-2-8"></span>    <span class="ResWord">def</span> <span class="ID">Install</span>(<span class="ResWord">self</span>, <span class="ID">presenter</span>, <span class="ID">view</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-c6309d247a7a8a7d30582de68bfab14b1629d197_3">   3</a> </span><span class="LineAnchor" id="CA-c6309d247a7a8a7d30582de68bfab14b1629d197_3"></span><span class="anchor" id="line-3-8"></span>        <span class="ResWord">self</span>.<span class="ID">presenter</span> = <span class="ID">presenter</span></span>
+<span class="line"><span class="LineNumber"><a href="#CA-c6309d247a7a8a7d30582de68bfab14b1629d197_4">   4</a> </span><span class="LineAnchor" id="CA-c6309d247a7a8a7d30582de68bfab14b1629d197_4"></span><span class="anchor" id="line-4-8"></span>        <span class="ResWord">self</span>.<span class="ID">view</span> = <span class="ID">view</span></span>
+<span class="line"><span class="LineNumber"><a href="#CA-c6309d247a7a8a7d30582de68bfab14b1629d197_5">   5</a> </span><span class="LineAnchor" id="CA-c6309d247a7a8a7d30582de68bfab14b1629d197_5"></span><span class="anchor" id="line-5-8"></span>        <span class="ID">view</span>.<span class="ID">albums</span>.<span class="ID">Bind</span>(<span class="ID">wx</span>.<span class="ID">EVT_LISTBOX</span>, <span class="ResWord">self</span>.<span class="ID">OnReloadNeeded</span>)</span>
+<span class="line"><span class="LineNumber"><a href="#CA-c6309d247a7a8a7d30582de68bfab14b1629d197_6">   6</a> </span><span class="LineAnchor" id="CA-c6309d247a7a8a7d30582de68bfab14b1629d197_6"></span><span class="anchor" id="line-6-8"></span>        <span class="ID">view</span>.<span class="ID">title</span>.<span class="ID">Bind</span>(<span class="ID">wx</span>.<span class="ID">EVT_TEXT</span>, <span class="ResWord">self</span>.<span class="ID">OnDataFieldUpdated</span>)</span>
+<span class="line"><span class="LineNumber"><a href="#CA-c6309d247a7a8a7d30582de68bfab14b1629d197_7">   7</a> </span><span class="LineAnchor" id="CA-c6309d247a7a8a7d30582de68bfab14b1629d197_7"></span><span class="anchor" id="line-7-5"></span>        <span class="ID">view</span>.<span class="ID">artist</span>.<span class="ID">Bind</span>(<span class="ID">wx</span>.<span class="ID">EVT_TEXT</span>, <span class="ResWord">self</span>.<span class="ID">OnDataFieldUpdated</span>)</span>
+<span class="line"><span class="LineNumber"><a href="#CA-c6309d247a7a8a7d30582de68bfab14b1629d197_8">   8</a> </span><span class="LineAnchor" id="CA-c6309d247a7a8a7d30582de68bfab14b1629d197_8"></span><span class="anchor" id="line-8-4"></span>        <span class="ID">view</span>.<span class="ID">composer</span>.<span class="ID">Bind</span>(<span class="ID">wx</span>.<span class="ID">EVT_TEXT</span>, <span class="ResWord">self</span>.<span class="ID">OnDataFieldUpdated</span>)</span>
+<span class="line"><span class="LineNumber"><a href="#CA-c6309d247a7a8a7d30582de68bfab14b1629d197_9">   9</a> </span><span class="LineAnchor" id="CA-c6309d247a7a8a7d30582de68bfab14b1629d197_9"></span><span class="anchor" id="line-9-3"></span>        <span class="ID">view</span>.<span class="ID">classical</span>.<span class="ID">Bind</span>(<span class="ID">wx</span>.<span class="ID">EVT_CHECKBOX</span>, <span class="ResWord">self</span>.<span class="ID">OnDataFieldUpdated</span>)</span>
+<span class="line"><span class="LineNumber"><a href="#CA-c6309d247a7a8a7d30582de68bfab14b1629d197_10">  10</a> </span><span class="LineAnchor" id="CA-c6309d247a7a8a7d30582de68bfab14b1629d197_10"></span><span class="anchor" id="line-10-2"></span>        <span class="ID">view</span>.<span class="ID">apply</span>.<span class="ID">Bind</span>(<span class="ID">wx</span>.<span class="ID">EVT_BUTTON</span>, <span class="ResWord">self</span>.<span class="ID">OnApply</span>)</span>
+<span class="line"><span class="LineNumber"><a href="#CA-c6309d247a7a8a7d30582de68bfab14b1629d197_11">  11</a> </span><span class="LineAnchor" id="CA-c6309d247a7a8a7d30582de68bfab14b1629d197_11"></span><span class="anchor" id="line-11-2"></span>        <span class="ID">view</span>.<span class="ID">cancel</span>.<span class="ID">Bind</span>(<span class="ID">wx</span>.<span class="ID">EVT_BUTTON</span>, <span class="ResWord">self</span>.<span class="ID">OnReloadNeeded</span>)</span>
+<span class="line"><span class="LineNumber"><a href="#CA-c6309d247a7a8a7d30582de68bfab14b1629d197_12">  12</a> </span><span class="LineAnchor" id="CA-c6309d247a7a8a7d30582de68bfab14b1629d197_12"></span><span class="anchor" id="line-12-2"></span>        </span>
+<span class="line"><span class="LineNumber"><a href="#CA-c6309d247a7a8a7d30582de68bfab14b1629d197_13">  13</a> </span><span class="LineAnchor" id="CA-c6309d247a7a8a7d30582de68bfab14b1629d197_13"></span><span class="anchor" id="line-13-2"></span>    <span class="ResWord">def</span> <span class="ID">OnApply</span>(<span class="ResWord">self</span>, <span class="ID">evt</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-c6309d247a7a8a7d30582de68bfab14b1629d197_14">  14</a> </span><span class="LineAnchor" id="CA-c6309d247a7a8a7d30582de68bfab14b1629d197_14"></span><span class="anchor" id="line-14-2"></span>        <span class="ResWord">self</span>.<span class="ID">presenter</span>.<span class="ID">updateModel</span>()</span>
+<span class="line"><span class="LineNumber"><a href="#CA-c6309d247a7a8a7d30582de68bfab14b1629d197_15">  15</a> </span><span class="LineAnchor" id="CA-c6309d247a7a8a7d30582de68bfab14b1629d197_15"></span><span class="anchor" id="line-15-2"></span>        </span>
+<span class="line"><span class="LineNumber"><a href="#CA-c6309d247a7a8a7d30582de68bfab14b1629d197_16">  16</a> </span><span class="LineAnchor" id="CA-c6309d247a7a8a7d30582de68bfab14b1629d197_16"></span><span class="anchor" id="line-16-2"></span>    <span class="ResWord">def</span> <span class="ID">OnReloadNeeded</span>(<span class="ResWord">self</span>, <span class="ID">evt</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-c6309d247a7a8a7d30582de68bfab14b1629d197_17">  17</a> </span><span class="LineAnchor" id="CA-c6309d247a7a8a7d30582de68bfab14b1629d197_17"></span><span class="anchor" id="line-17-2"></span>        <span class="ResWord">self</span>.<span class="ID">presenter</span>.<span class="ID">loadViewFromModel</span>()</span>
+<span class="line"><span class="LineNumber"><a href="#CA-c6309d247a7a8a7d30582de68bfab14b1629d197_18">  18</a> </span><span class="LineAnchor" id="CA-c6309d247a7a8a7d30582de68bfab14b1629d197_18"></span><span class="anchor" id="line-18-2"></span>        </span>
+<span class="line"><span class="LineNumber"><a href="#CA-c6309d247a7a8a7d30582de68bfab14b1629d197_19">  19</a> </span><span class="LineAnchor" id="CA-c6309d247a7a8a7d30582de68bfab14b1629d197_19"></span><span class="anchor" id="line-19-2"></span>    <span class="ResWord">def</span> <span class="ID">OnDataFieldUpdated</span>(<span class="ResWord">self</span>, <span class="ID">evt</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-c6309d247a7a8a7d30582de68bfab14b1629d197_20">  20</a> </span><span class="LineAnchor" id="CA-c6309d247a7a8a7d30582de68bfab14b1629d197_20"></span><span class="anchor" id="line-20-2"></span>        <span class="ResWord">self</span>.<span class="ID">presenter</span>.<span class="ID">dataFieldUpdated</span>()</span>
+</pre></div></div><span class="anchor" id="line-167"></span><span class="anchor" id="line-168"></span><p class="line874">You save data to the model when the user hits the apply button. <span class="anchor" id="line-169"></span><span class="anchor" id="line-170"></span></p><p class="line867"><span class="anchor" id="line-171"></span><span class="anchor" id="line-172"></span><span class="anchor" id="line-173"></span><span class="anchor" id="line-174"></span><span class="anchor" id="line-175"></span><span class="anchor" id="line-176"></span><span class="anchor" id="line-177"></span><span class="anchor" id="line-178"></span><span class="anchor" id="line-179"></span><span class="anchor" id="line-180"></span><span class="anchor" id="line-181"></span><span class="anchor" id="line-182"></span><span class="anchor" id="line-1-17"></span></p><div class="highlight python"><div class="codearea" dir="ltr" lang="en">
+<script type="text/javascript">
+document.write('<a href="#" onclick="return togglenumber(\'CA-1dec38e72278ce9f3646f6977fd06cbff6f6428d\', 1, 1);" \
+                class="codenumbers">Toggle line numbers<\/a>');
+</script><a href="#" onclick="return togglenumber('CA-1dec38e72278ce9f3646f6977fd06cbff6f6428d', 1, 1);" class="codenumbers">Toggle line numbers</a>
+<pre dir="ltr" id="CA-1dec38e72278ce9f3646f6977fd06cbff6f6428d" lang="en"><span class="line"><span class="LineNumber"><a href="#CA-1dec38e72278ce9f3646f6977fd06cbff6f6428d_1">   1</a> </span><span class="LineAnchor" id="CA-1dec38e72278ce9f3646f6977fd06cbff6f6428d_1"></span><span class="anchor" id="line-1-18"></span>    <span class="ResWord">def</span> <span class="ID">updateModel</span>(<span class="ResWord">self</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-1dec38e72278ce9f3646f6977fd06cbff6f6428d_2">   2</a> </span><span class="LineAnchor" id="CA-1dec38e72278ce9f3646f6977fd06cbff6f6428d_2"></span><span class="anchor" id="line-2-9"></span>        <span class="ResWord">self</span>.<span class="ID">selectedAlbum</span>.<span class="ID">title</span> = <span class="ResWord">self</span>.<span class="ID">view</span>.<span class="ID">getTitle</span>()</span>
+<span class="line"><span class="LineNumber"><a href="#CA-1dec38e72278ce9f3646f6977fd06cbff6f6428d_3">   3</a> </span><span class="LineAnchor" id="CA-1dec38e72278ce9f3646f6977fd06cbff6f6428d_3"></span><span class="anchor" id="line-3-9"></span>        <span class="ResWord">self</span>.<span class="ID">selectedAlbum</span>.<span class="ID">artist</span> = <span class="ResWord">self</span>.<span class="ID">view</span>.<span class="ID">getArtist</span>()</span>
+<span class="line"><span class="LineNumber"><a href="#CA-1dec38e72278ce9f3646f6977fd06cbff6f6428d_4">   4</a> </span><span class="LineAnchor" id="CA-1dec38e72278ce9f3646f6977fd06cbff6f6428d_4"></span><span class="anchor" id="line-4-9"></span>        <span class="ResWord">self</span>.<span class="ID">selectedAlbum</span>.<span class="ID">isClassical</span> = <span class="ResWord">self</span>.<span class="ID">view</span>.<span class="ID">isClassical</span>()</span>
+<span class="line"><span class="LineNumber"><a href="#CA-1dec38e72278ce9f3646f6977fd06cbff6f6428d_5">   5</a> </span><span class="LineAnchor" id="CA-1dec38e72278ce9f3646f6977fd06cbff6f6428d_5"></span><span class="anchor" id="line-5-9"></span>        <span class="ResWord">if</span> <span class="ResWord">self</span>.<span class="ID">view</span>.<span class="ID">isClassical</span>:</span>
+<span class="line"><span class="LineNumber"><a href="#CA-1dec38e72278ce9f3646f6977fd06cbff6f6428d_6">   6</a> </span><span class="LineAnchor" id="CA-1dec38e72278ce9f3646f6977fd06cbff6f6428d_6"></span><span class="anchor" id="line-6-9"></span>            <span class="ResWord">self</span>.<span class="ID">selectedAlbum</span>.<span class="ID">composer</span> = <span class="ResWord">self</span>.<span class="ID">view</span>.<span class="ID">getComposer</span>()</span>
+<span class="line"><span class="LineNumber"><a href="#CA-1dec38e72278ce9f3646f6977fd06cbff6f6428d_7">   7</a> </span><span class="LineAnchor" id="CA-1dec38e72278ce9f3646f6977fd06cbff6f6428d_7"></span><span class="anchor" id="line-7-6"></span>        <span class="ResWord">else</span>:</span>
+<span class="line"><span class="LineNumber"><a href="#CA-1dec38e72278ce9f3646f6977fd06cbff6f6428d_8">   8</a> </span><span class="LineAnchor" id="CA-1dec38e72278ce9f3646f6977fd06cbff6f6428d_8"></span><span class="anchor" id="line-8-5"></span>            <span class="ResWord">self</span>.<span class="ID">selectedAlbum</span>.<span class="ID">composer</span> = <span class="ResWord">None</span></span>
+<span class="line"><span class="LineNumber"><a href="#CA-1dec38e72278ce9f3646f6977fd06cbff6f6428d_9">   9</a> </span><span class="LineAnchor" id="CA-1dec38e72278ce9f3646f6977fd06cbff6f6428d_9"></span><span class="anchor" id="line-9-4"></span>        <span class="ResWord">self</span>.<span class="ID">enableApplyAndCancel</span>(<span class="ResWord">False</span>)</span>
+<span class="line"><span class="LineNumber"><a href="#CA-1dec38e72278ce9f3646f6977fd06cbff6f6428d_10">  10</a> </span><span class="LineAnchor" id="CA-1dec38e72278ce9f3646f6977fd06cbff6f6428d_10"></span><span class="anchor" id="line-10-3"></span>        <span class="ResWord">self</span>.<span class="ID">loadViewFromModel</span>()</span>
+</pre></div></div><span class="anchor" id="line-183"></span><span class="anchor" id="line-184"></span><p class="line874">To test if apply works you can use the unittest module and mock objects for view and interactor <span class="anchor" id="line-185"></span><span class="anchor" id="line-186"></span></p><p class="line867"><span class="anchor" id="line-187"></span><span class="anchor" id="line-188"></span><span class="anchor" id="line-189"></span><span class="anchor" id="line-190"></span><span class="anchor" id="line-191"></span><span class="anchor" id="line-192"></span><span class="anchor" id="line-193"></span><span class="anchor" id="line-194"></span><span class="anchor" id="line-195"></span><span class="anchor" id="line-196"></span><span class="anchor" id="line-197"></span><span class="anchor" id="line-198"></span><span class="anchor" id="line-199"></span><span class="anchor" id="line-1-19"></span></p><div class="highlight python"><div class="codearea" dir="ltr" lang="en">
+<script type="text/javascript">
+document.write('<a href="#" onclick="return togglenumber(\'CA-eeedcca292c513284b7aa6b9a866d22ec012e34d\', 1, 1);" \
+                class="codenumbers">Toggle line numbers<\/a>');
+</script><a href="#" onclick="return togglenumber('CA-eeedcca292c513284b7aa6b9a866d22ec012e34d', 1, 1);" class="codenumbers">Toggle line numbers</a>
+<pre dir="ltr" id="CA-eeedcca292c513284b7aa6b9a866d22ec012e34d" lang="en"><span class="line"><span class="LineNumber"><a href="#CA-eeedcca292c513284b7aa6b9a866d22ec012e34d_1">   1</a> </span><span class="LineAnchor" id="CA-eeedcca292c513284b7aa6b9a866d22ec012e34d_1"></span><span class="anchor" id="line-1-20"></span><span class="ResWord">class</span> <span class="ID">TestAlbumPresenter</span>(<span class="ID">unittest</span>.<span class="ID">TestCase</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-eeedcca292c513284b7aa6b9a866d22ec012e34d_2">   2</a> </span><span class="LineAnchor" id="CA-eeedcca292c513284b7aa6b9a866d22ec012e34d_2"></span><span class="anchor" id="line-2-10"></span>    ...</span>
+<span class="line"><span class="LineNumber"><a href="#CA-eeedcca292c513284b7aa6b9a866d22ec012e34d_3">   3</a> </span><span class="LineAnchor" id="CA-eeedcca292c513284b7aa6b9a866d22ec012e34d_3"></span><span class="anchor" id="line-3-10"></span>    <span class="ResWord">def</span> <span class="ID">testApplySavesDataToModel</span>(<span class="ResWord">self</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-eeedcca292c513284b7aa6b9a866d22ec012e34d_4">   4</a> </span><span class="LineAnchor" id="CA-eeedcca292c513284b7aa6b9a866d22ec012e34d_4"></span><span class="anchor" id="line-4-10"></span>        <span class="ID">view</span> = <span class="ID">mock_objects</span>.<span class="ID">MockAlbumWindow</span>();</span>
+<span class="line"><span class="LineNumber"><a href="#CA-eeedcca292c513284b7aa6b9a866d22ec012e34d_5">   5</a> </span><span class="LineAnchor" id="CA-eeedcca292c513284b7aa6b9a866d22ec012e34d_5"></span><span class="anchor" id="line-5-10"></span>        <span class="ID">model</span> = [<span class="ID">models</span>.<span class="ID">Album</span>(*<span class="ID">data</span>) <span class="ResWord">for</span> <span class="ID">data</span> <span class="ResWord">in</span> <span class="ResWord">self</span>.<span class="ID">someAlbums</span>]</span>
+<span class="line"><span class="LineNumber"><a href="#CA-eeedcca292c513284b7aa6b9a866d22ec012e34d_6">   6</a> </span><span class="LineAnchor" id="CA-eeedcca292c513284b7aa6b9a866d22ec012e34d_6"></span><span class="anchor" id="line-6-10"></span>        <span class="ID">interactor</span> = <span class="ID">mock_objects</span>.<span class="ID">MockAlbumInteractor</span>()</span>
+<span class="line"><span class="LineNumber"><a href="#CA-eeedcca292c513284b7aa6b9a866d22ec012e34d_7">   7</a> </span><span class="LineAnchor" id="CA-eeedcca292c513284b7aa6b9a866d22ec012e34d_7"></span><span class="anchor" id="line-7-7"></span>        <span class="ID">presenter</span> = <span class="ID">presenters</span>.<span class="ID">AlbumPresenter</span>(<span class="ID">model</span>, <span class="ID">view</span>, <span class="ID">interactor</span>);</span>
+<span class="line"><span class="LineNumber"><a href="#CA-eeedcca292c513284b7aa6b9a866d22ec012e34d_8">   8</a> </span><span class="LineAnchor" id="CA-eeedcca292c513284b7aa6b9a866d22ec012e34d_8"></span><span class="anchor" id="line-8-6"></span>        <span class="ID">newTitle</span> = <span class="String">"</span><span class="String">Some Other Title</span><span class="String">"</span></span>
+<span class="line"><span class="LineNumber"><a href="#CA-eeedcca292c513284b7aa6b9a866d22ec012e34d_9">   9</a> </span><span class="LineAnchor" id="CA-eeedcca292c513284b7aa6b9a866d22ec012e34d_9"></span><span class="anchor" id="line-9-5"></span>        <span class="ID">view</span>.<span class="ID">title</span> = <span class="ID">newTitle</span></span>
+<span class="line"><span class="LineNumber"><a href="#CA-eeedcca292c513284b7aa6b9a866d22ec012e34d_10">  10</a> </span><span class="LineAnchor" id="CA-eeedcca292c513284b7aa6b9a866d22ec012e34d_10"></span><span class="anchor" id="line-10-4"></span>        <span class="ID">presenter</span>.<span class="ID">updateModel</span>()</span>
+<span class="line"><span class="LineNumber"><a href="#CA-eeedcca292c513284b7aa6b9a866d22ec012e34d_11">  11</a> </span><span class="LineAnchor" id="CA-eeedcca292c513284b7aa6b9a866d22ec012e34d_11"></span><span class="anchor" id="line-11-3"></span>        <span class="ResWord">assert</span> <span class="ID">view</span>.<span class="ID">title</span> == <span class="ID">newTitle</span></span>
+</pre></div></div><span class="anchor" id="line-200"></span><span class="anchor" id="line-201"></span><p class="line862">Complete implementation together with mock objects and tests: <a class="attachment" href="https://wiki.wxpython.org/ModelViewPresenter?action=AttachFile&amp;do=view&amp;target=mvp.zip" title="">mvp.zip</a> To start the application use albums.pyw <span class="anchor" id="line-202"></span><span class="anchor" id="line-203"></span></p><p class="line867">
+</p><h2 id="Expanding_applications_with_MVP_architecture">Expanding applications with MVP architecture</h2>
+<span class="anchor" id="line-204"></span><span class="anchor" id="line-205"></span><p class="line874">Let's
+ say that the next step would be to add the capability to add new albums
+ and to provide a way to sort the albums either ascending or descending.
+ The application will look like this: <span class="anchor" id="line-206"></span><span class="anchor" id="line-207"></span></p><p class="line867"><img alt="mvp2.png" class="attachment" src="ModelViewPresenter-wxPyWiki_files/ModelViewPresenter_002.png" title="mvp2.png"> <span class="anchor" id="line-208"></span><span class="anchor" id="line-209"></span></p><p class="line874">The
+ best order to expand the example is to start in the test module and 
+first update the tests, next the presenter, the mock views, then when 
+the functionality is done move to the real view, add the necessary bits 
+and then alter the interactor to connect the view with the presenter. 
+For expediency reasons will do it first the View next the Presenter and 
+last the Interactor. <span class="anchor" id="line-210"></span><span class="anchor" id="line-211"></span></p><p class="line874">First let's add the visual bits: <span class="anchor" id="line-212"></span>In the <a class="nonexistent" href="https://wiki.wxpython.org/AlbumWindow">AlbumWindow</a> we add 2 buttons, place them beneath the albums list and provide access to the order button label. <span class="anchor" id="line-213"></span><span class="anchor" id="line-214"></span></p><p class="line867"><span class="anchor" id="line-215"></span><span class="anchor" id="line-216"></span><span class="anchor" id="line-217"></span><span class="anchor" id="line-218"></span><span class="anchor" id="line-219"></span><span class="anchor" id="line-220"></span><span class="anchor" id="line-221"></span><span class="anchor" id="line-222"></span><span class="anchor" id="line-223"></span><span class="anchor" id="line-224"></span><span class="anchor" id="line-225"></span><span class="anchor" id="line-226"></span><span class="anchor" id="line-227"></span><span class="anchor" id="line-228"></span><span class="anchor" id="line-229"></span><span class="anchor" id="line-230"></span><span class="anchor" id="line-231"></span><span class="anchor" id="line-1-21"></span></p><div class="highlight python"><div class="codearea" dir="ltr" lang="en">
+<script type="text/javascript">
+document.write('<a href="#" onclick="return togglenumber(\'CA-97fe0c21db51e98bab1a5ea74ac04b96007599d9\', 1, 1);" \
+                class="codenumbers">Toggle line numbers<\/a>');
+</script><a href="#" onclick="return togglenumber('CA-97fe0c21db51e98bab1a5ea74ac04b96007599d9', 1, 1);" class="codenumbers">Toggle line numbers</a>
+<pre dir="ltr" id="CA-97fe0c21db51e98bab1a5ea74ac04b96007599d9" lang="en"><span class="line"><span class="LineNumber"><a href="#CA-97fe0c21db51e98bab1a5ea74ac04b96007599d9_1">   1</a> </span><span class="LineAnchor" id="CA-97fe0c21db51e98bab1a5ea74ac04b96007599d9_1"></span><span class="anchor" id="line-1-22"></span><span class="ResWord">class</span> <span class="ID">AlbumWindow</span>(<span class="ID">wx</span>.<span class="ID">Frame</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-97fe0c21db51e98bab1a5ea74ac04b96007599d9_2">   2</a> </span><span class="LineAnchor" id="CA-97fe0c21db51e98bab1a5ea74ac04b96007599d9_2"></span><span class="anchor" id="line-2-11"></span>    <span class="ResWord">def</span> <span class="ID">__init__</span>(<span class="ResWord">self</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-97fe0c21db51e98bab1a5ea74ac04b96007599d9_3">   3</a> </span><span class="LineAnchor" id="CA-97fe0c21db51e98bab1a5ea74ac04b96007599d9_3"></span><span class="anchor" id="line-3-11"></span>        ...</span>
+<span class="line"><span class="LineNumber"><a href="#CA-97fe0c21db51e98bab1a5ea74ac04b96007599d9_4">   4</a> </span><span class="LineAnchor" id="CA-97fe0c21db51e98bab1a5ea74ac04b96007599d9_4"></span><span class="anchor" id="line-4-11"></span>        <span class="ResWord">self</span>.<span class="ID">add</span> = <span class="ID">wx</span>.<span class="ID">Button</span>(<span class="ResWord">self</span>, <span class="ID">label</span>=<span class="String">"</span><span class="String">New Album</span><span class="String">"</span>)</span>
+<span class="line"><span class="LineNumber"><a href="#CA-97fe0c21db51e98bab1a5ea74ac04b96007599d9_5">   5</a> </span><span class="LineAnchor" id="CA-97fe0c21db51e98bab1a5ea74ac04b96007599d9_5"></span><span class="anchor" id="line-5-11"></span>        <span class="ResWord">self</span>.<span class="ID">order</span> = <span class="ID">wx</span>.<span class="ID">Button</span>(<span class="ResWord">self</span>, <span class="ID">label</span>=<span class="String">"</span><span class="String">A-&gt;Z</span><span class="String">"</span>)</span>
+<span class="line"><span class="LineNumber"><a href="#CA-97fe0c21db51e98bab1a5ea74ac04b96007599d9_6">   6</a> </span><span class="LineAnchor" id="CA-97fe0c21db51e98bab1a5ea74ac04b96007599d9_6"></span><span class="anchor" id="line-6-11"></span></span>
+<span class="line"><span class="LineNumber"><a href="#CA-97fe0c21db51e98bab1a5ea74ac04b96007599d9_7">   7</a> </span><span class="LineAnchor" id="CA-97fe0c21db51e98bab1a5ea74ac04b96007599d9_7"></span><span class="anchor" id="line-7-8"></span>        <span class="ID">leftSizer</span> = <span class="ID">wx</span>.<span class="ID">GridBagSizer</span>(<span class="Number">5</span>,<span class="Number">5</span>)</span>
+<span class="line"><span class="LineNumber"><a href="#CA-97fe0c21db51e98bab1a5ea74ac04b96007599d9_8">   8</a> </span><span class="LineAnchor" id="CA-97fe0c21db51e98bab1a5ea74ac04b96007599d9_8"></span><span class="anchor" id="line-8-7"></span>        <span class="ID">leftSizer</span>.<span class="ID">Add</span>(<span class="ResWord">self</span>.<span class="ID">albums</span>, (<span class="Number">0</span>,<span class="Number">0</span>), (<span class="Number">1</span>,<span class="Number">2</span>),<span class="ID">flag</span>=<span class="ID">wx</span>.<span class="ID">EXPAND</span>)</span>
+<span class="line"><span class="LineNumber"><a href="#CA-97fe0c21db51e98bab1a5ea74ac04b96007599d9_9">   9</a> </span><span class="LineAnchor" id="CA-97fe0c21db51e98bab1a5ea74ac04b96007599d9_9"></span><span class="anchor" id="line-9-6"></span>        <span class="ID">leftSizer</span>.<span class="ID">Add</span>(<span class="ResWord">self</span>.<span class="ID">add</span>, (<span class="Number">1</span>,<span class="Number">0</span>), (<span class="Number">1</span>,<span class="Number">1</span>),<span class="ID">flag</span>=<span class="ID">wx</span>.<span class="ID">EXPAND</span>)</span>
+<span class="line"><span class="LineNumber"><a href="#CA-97fe0c21db51e98bab1a5ea74ac04b96007599d9_10">  10</a> </span><span class="LineAnchor" id="CA-97fe0c21db51e98bab1a5ea74ac04b96007599d9_10"></span><span class="anchor" id="line-10-5"></span>        <span class="ID">leftSizer</span>.<span class="ID">Add</span>(<span class="ResWord">self</span>.<span class="ID">order</span>, (<span class="Number">1</span>,<span class="Number">1</span>), (<span class="Number">1</span>,<span class="Number">1</span>),<span class="ID">flag</span>=<span class="ID">wx</span>.<span class="ID">EXPAND</span>)</span>
+<span class="line"><span class="LineNumber"><a href="#CA-97fe0c21db51e98bab1a5ea74ac04b96007599d9_11">  11</a> </span><span class="LineAnchor" id="CA-97fe0c21db51e98bab1a5ea74ac04b96007599d9_11"></span><span class="anchor" id="line-11-4"></span>        ...</span>
+<span class="line"><span class="LineNumber"><a href="#CA-97fe0c21db51e98bab1a5ea74ac04b96007599d9_12">  12</a> </span><span class="LineAnchor" id="CA-97fe0c21db51e98bab1a5ea74ac04b96007599d9_12"></span><span class="anchor" id="line-12-3"></span>        <span class="ID">mainSizer</span>.<span class="ID">Add</span>(<span class="ID">leftSizer</span>, <span class="Number">0</span>, <span class="ID">wx</span>.<span class="ID">EXPAND</span>|<span class="ID">wx</span>.<span class="ID">ALL</span>, <span class="Number">5</span>)</span>
+<span class="line"><span class="LineNumber"><a href="#CA-97fe0c21db51e98bab1a5ea74ac04b96007599d9_13">  13</a> </span><span class="LineAnchor" id="CA-97fe0c21db51e98bab1a5ea74ac04b96007599d9_13"></span><span class="anchor" id="line-13-3"></span>    ...</span>
+<span class="line"><span class="LineNumber"><a href="#CA-97fe0c21db51e98bab1a5ea74ac04b96007599d9_14">  14</a> </span><span class="LineAnchor" id="CA-97fe0c21db51e98bab1a5ea74ac04b96007599d9_14"></span><span class="anchor" id="line-14-3"></span>    <span class="ResWord">def</span> <span class="ID">setOrderLabel</span>(<span class="ResWord">self</span>, <span class="ID">label</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-97fe0c21db51e98bab1a5ea74ac04b96007599d9_15">  15</a> </span><span class="LineAnchor" id="CA-97fe0c21db51e98bab1a5ea74ac04b96007599d9_15"></span><span class="anchor" id="line-15-3"></span>        <span class="ResWord">self</span>.<span class="ID">order</span>.<span class="ID">SetLabel</span>(<span class="ID">label</span>)</span>
+</pre></div></div><span class="anchor" id="line-232"></span><span class="anchor" id="line-233"></span><p class="line874">Next we add the functionality in the presenter. First we add a flag to hold the order: <span class="anchor" id="line-234"></span><span class="anchor" id="line-235"></span></p><p class="line867"><span class="anchor" id="line-236"></span><span class="anchor" id="line-237"></span><span class="anchor" id="line-238"></span><span class="anchor" id="line-239"></span><span class="anchor" id="line-240"></span><span class="anchor" id="line-241"></span><span class="anchor" id="line-242"></span><span class="anchor" id="line-1-23"></span></p><div class="highlight python"><div class="codearea" dir="ltr" lang="en">
+<script type="text/javascript">
+document.write('<a href="#" onclick="return togglenumber(\'CA-6b23882d22130ef98eb3e6fda37f84af9ca817ea\', 1, 1);" \
+                class="codenumbers">Toggle line numbers<\/a>');
+</script><a href="#" onclick="return togglenumber('CA-6b23882d22130ef98eb3e6fda37f84af9ca817ea', 1, 1);" class="codenumbers">Toggle line numbers</a>
+<pre dir="ltr" id="CA-6b23882d22130ef98eb3e6fda37f84af9ca817ea" lang="en"><span class="line"><span class="LineNumber"><a href="#CA-6b23882d22130ef98eb3e6fda37f84af9ca817ea_1">   1</a> </span><span class="LineAnchor" id="CA-6b23882d22130ef98eb3e6fda37f84af9ca817ea_1"></span><span class="anchor" id="line-1-24"></span><span class="ResWord">class</span> <span class="ID">AlbumPresenter</span>(<span class="ResWord">object</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-6b23882d22130ef98eb3e6fda37f84af9ca817ea_2">   2</a> </span><span class="LineAnchor" id="CA-6b23882d22130ef98eb3e6fda37f84af9ca817ea_2"></span><span class="anchor" id="line-2-12"></span>    <span class="ResWord">def</span> <span class="ID">__init__</span>(<span class="ResWord">self</span>, <span class="ID">albums</span>, <span class="ID">view</span>, <span class="ID">interactor</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-6b23882d22130ef98eb3e6fda37f84af9ca817ea_3">   3</a> </span><span class="LineAnchor" id="CA-6b23882d22130ef98eb3e6fda37f84af9ca817ea_3"></span><span class="anchor" id="line-3-12"></span>        ...</span>
+<span class="line"><span class="LineNumber"><a href="#CA-6b23882d22130ef98eb3e6fda37f84af9ca817ea_4">   4</a> </span><span class="LineAnchor" id="CA-6b23882d22130ef98eb3e6fda37f84af9ca817ea_4"></span><span class="anchor" id="line-4-12"></span>        <span class="ResWord">self</span>.<span class="ID">reverse</span> = <span class="ResWord">False</span></span>
+<span class="line"><span class="LineNumber"><a href="#CA-6b23882d22130ef98eb3e6fda37f84af9ca817ea_5">   5</a> </span><span class="LineAnchor" id="CA-6b23882d22130ef98eb3e6fda37f84af9ca817ea_5"></span><span class="anchor" id="line-5-12"></span>        <span class="ResWord">self</span>.<span class="ID">albums</span>.<span class="ID">sort</span>(<span class="ID">key</span>=<span class="ResWord">lambda</span> <span class="ID">x</span>: <span class="ID">x</span>.<span class="ID">title</span>)</span>
+</pre></div></div><span class="anchor" id="line-243"></span><span class="anchor" id="line-244"></span><p class="line874">Next we fix the refreshAlbumList method to take into account that the list must be sorted according to our selected order. <span class="anchor" id="line-245"></span><span class="anchor" id="line-246"></span></p><p class="line867"><span class="anchor" id="line-247"></span><span class="anchor" id="line-248"></span><span class="anchor" id="line-249"></span><span class="anchor" id="line-250"></span><span class="anchor" id="line-251"></span><span class="anchor" id="line-252"></span><span class="anchor" id="line-253"></span><span class="anchor" id="line-254"></span><span class="anchor" id="line-255"></span><span class="anchor" id="line-1-25"></span></p><div class="highlight python"><div class="codearea" dir="ltr" lang="en">
+<script type="text/javascript">
+document.write('<a href="#" onclick="return togglenumber(\'CA-aa86f600d4b0223cff9582f56941a0d5078af63f\', 1, 1);" \
+                class="codenumbers">Toggle line numbers<\/a>');
+</script><a href="#" onclick="return togglenumber('CA-aa86f600d4b0223cff9582f56941a0d5078af63f', 1, 1);" class="codenumbers">Toggle line numbers</a>
+<pre dir="ltr" id="CA-aa86f600d4b0223cff9582f56941a0d5078af63f" lang="en"><span class="line"><span class="LineNumber"><a href="#CA-aa86f600d4b0223cff9582f56941a0d5078af63f_1">   1</a> </span><span class="LineAnchor" id="CA-aa86f600d4b0223cff9582f56941a0d5078af63f_1"></span><span class="anchor" id="line-1-26"></span><span class="ResWord">class</span> <span class="ID">AlbumPresenter</span>(<span class="ResWord">object</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-aa86f600d4b0223cff9582f56941a0d5078af63f_2">   2</a> </span><span class="LineAnchor" id="CA-aa86f600d4b0223cff9582f56941a0d5078af63f_2"></span><span class="anchor" id="line-2-13"></span>    <span class="ResWord">def</span> <span class="ID">refreshAlbumList</span>(<span class="ResWord">self</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-aa86f600d4b0223cff9582f56941a0d5078af63f_3">   3</a> </span><span class="LineAnchor" id="CA-aa86f600d4b0223cff9582f56941a0d5078af63f_3"></span><span class="anchor" id="line-3-13"></span>        <span class="ID">currentAlbum</span> = <span class="ResWord">self</span>.<span class="ID">view</span>.<span class="ID">getSelectedAlbum</span>()</span>
+<span class="line"><span class="LineNumber"><a href="#CA-aa86f600d4b0223cff9582f56941a0d5078af63f_4">   4</a> </span><span class="LineAnchor" id="CA-aa86f600d4b0223cff9582f56941a0d5078af63f_4"></span><span class="anchor" id="line-4-13"></span>        <span class="ResWord">self</span>.<span class="ID">selectedAlbum</span> = <span class="ResWord">self</span>.<span class="ID">albums</span>[<span class="ID">currentAlbum</span>]</span>
+<span class="line"><span class="LineNumber"><a href="#CA-aa86f600d4b0223cff9582f56941a0d5078af63f_5">   5</a> </span><span class="LineAnchor" id="CA-aa86f600d4b0223cff9582f56941a0d5078af63f_5"></span><span class="anchor" id="line-5-13"></span>        <span class="ResWord">self</span>.<span class="ID">albums</span>.<span class="ID">sort</span>(<span class="ID">key</span>=<span class="ResWord">lambda</span> <span class="ID">x</span>: <span class="ID">x</span>.<span class="ID">title</span>, <span class="ID">reverse</span>=<span class="ResWord">self</span>.<span class="ID">reverse</span>)</span>
+<span class="line"><span class="LineNumber"><a href="#CA-aa86f600d4b0223cff9582f56941a0d5078af63f_6">   6</a> </span><span class="LineAnchor" id="CA-aa86f600d4b0223cff9582f56941a0d5078af63f_6"></span><span class="anchor" id="line-6-12"></span>        <span class="ResWord">self</span>.<span class="ID">view</span>.<span class="ID">setAlbums</span>(<span class="ResWord">self</span>.<span class="ID">albums</span>)</span>
+<span class="line"><span class="LineNumber"><a href="#CA-aa86f600d4b0223cff9582f56941a0d5078af63f_7">   7</a> </span><span class="LineAnchor" id="CA-aa86f600d4b0223cff9582f56941a0d5078af63f_7"></span><span class="anchor" id="line-7-9"></span>        <span class="ResWord">self</span>.<span class="ID">view</span>.<span class="ID">setSelectedAlbum</span>(<span class="ResWord">self</span>.<span class="ID">albums</span>.<span class="ID">index</span>(<span class="ResWord">self</span>.<span class="ID">selectedAlbum</span>))        </span>
+</pre></div></div><span class="anchor" id="line-256"></span><span class="anchor" id="line-257"></span><p class="line874">Provide a way to toggle the order and a way to add a new album <span class="anchor" id="line-258"></span><span class="anchor" id="line-259"></span></p><p class="line867"><span class="anchor" id="line-260"></span><span class="anchor" id="line-261"></span><span class="anchor" id="line-262"></span><span class="anchor" id="line-263"></span><span class="anchor" id="line-264"></span><span class="anchor" id="line-265"></span><span class="anchor" id="line-266"></span><span class="anchor" id="line-267"></span><span class="anchor" id="line-268"></span><span class="anchor" id="line-269"></span><span class="anchor" id="line-270"></span><span class="anchor" id="line-271"></span><span class="anchor" id="line-272"></span><span class="anchor" id="line-1-27"></span></p><div class="highlight python"><div class="codearea" dir="ltr" lang="en">
+<script type="text/javascript">
+document.write('<a href="#" onclick="return togglenumber(\'CA-fca208a56d13292ba4ba85f3a9003fef36a89dbe\', 1, 1);" \
+                class="codenumbers">Toggle line numbers<\/a>');
+</script><a href="#" onclick="return togglenumber('CA-fca208a56d13292ba4ba85f3a9003fef36a89dbe', 1, 1);" class="codenumbers">Toggle line numbers</a>
+<pre dir="ltr" id="CA-fca208a56d13292ba4ba85f3a9003fef36a89dbe" lang="en"><span class="line"><span class="LineNumber"><a href="#CA-fca208a56d13292ba4ba85f3a9003fef36a89dbe_1">   1</a> </span><span class="LineAnchor" id="CA-fca208a56d13292ba4ba85f3a9003fef36a89dbe_1"></span><span class="anchor" id="line-1-28"></span><span class="ResWord">class</span> <span class="ID">AlbumPresenter</span>(<span class="ResWord">object</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-fca208a56d13292ba4ba85f3a9003fef36a89dbe_2">   2</a> </span><span class="LineAnchor" id="CA-fca208a56d13292ba4ba85f3a9003fef36a89dbe_2"></span><span class="anchor" id="line-2-14"></span>    <span class="ResWord">def</span> <span class="ID">toggleOrder</span>(<span class="ResWord">self</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-fca208a56d13292ba4ba85f3a9003fef36a89dbe_3">   3</a> </span><span class="LineAnchor" id="CA-fca208a56d13292ba4ba85f3a9003fef36a89dbe_3"></span><span class="anchor" id="line-3-14"></span>        <span class="ResWord">self</span>.<span class="ID">reverse</span> = <span class="ResWord">not</span> <span class="ResWord">self</span>.<span class="ID">reverse</span></span>
+<span class="line"><span class="LineNumber"><a href="#CA-fca208a56d13292ba4ba85f3a9003fef36a89dbe_4">   4</a> </span><span class="LineAnchor" id="CA-fca208a56d13292ba4ba85f3a9003fef36a89dbe_4"></span><span class="anchor" id="line-4-14"></span>        <span class="ResWord">self</span>.<span class="ID">loadViewFromModel</span>()</span>
+<span class="line"><span class="LineNumber"><a href="#CA-fca208a56d13292ba4ba85f3a9003fef36a89dbe_5">   5</a> </span><span class="LineAnchor" id="CA-fca208a56d13292ba4ba85f3a9003fef36a89dbe_5"></span><span class="anchor" id="line-5-14"></span>        </span>
+<span class="line"><span class="LineNumber"><a href="#CA-fca208a56d13292ba4ba85f3a9003fef36a89dbe_6">   6</a> </span><span class="LineAnchor" id="CA-fca208a56d13292ba4ba85f3a9003fef36a89dbe_6"></span><span class="anchor" id="line-6-13"></span>    <span class="ResWord">def</span> <span class="ID">addNewAlbum</span>(<span class="ResWord">self</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-fca208a56d13292ba4ba85f3a9003fef36a89dbe_7">   7</a> </span><span class="LineAnchor" id="CA-fca208a56d13292ba4ba85f3a9003fef36a89dbe_7"></span><span class="anchor" id="line-7-10"></span>        <span class="ID">newAlbum</span> = <span class="ID">models</span>.<span class="ID">Album</span>(<span class="String">"</span><span class="String">Unknown Artist</span><span class="String">"</span>, <span class="String">"</span><span class="String">New Album Title</span><span class="String">"</span>)</span>
+<span class="line"><span class="LineNumber"><a href="#CA-fca208a56d13292ba4ba85f3a9003fef36a89dbe_8">   8</a> </span><span class="LineAnchor" id="CA-fca208a56d13292ba4ba85f3a9003fef36a89dbe_8"></span><span class="anchor" id="line-8-8"></span>        <span class="ResWord">self</span>.<span class="ID">albums</span>.<span class="ID">append</span>(<span class="ID">newAlbum</span>)</span>
+<span class="line"><span class="LineNumber"><a href="#CA-fca208a56d13292ba4ba85f3a9003fef36a89dbe_9">   9</a> </span><span class="LineAnchor" id="CA-fca208a56d13292ba4ba85f3a9003fef36a89dbe_9"></span><span class="anchor" id="line-9-7"></span>        <span class="ResWord">self</span>.<span class="ID">view</span>.<span class="ID">setAlbums</span>(<span class="ResWord">self</span>.<span class="ID">albums</span>)</span>
+<span class="line"><span class="LineNumber"><a href="#CA-fca208a56d13292ba4ba85f3a9003fef36a89dbe_10">  10</a> </span><span class="LineAnchor" id="CA-fca208a56d13292ba4ba85f3a9003fef36a89dbe_10"></span><span class="anchor" id="line-10-6"></span>        <span class="ResWord">self</span>.<span class="ID">view</span>.<span class="ID">setSelectedAlbum</span>(<span class="ResWord">self</span>.<span class="ID">albums</span>.<span class="ID">index</span>(<span class="ID">newAlbum</span>))</span>
+<span class="line"><span class="LineNumber"><a href="#CA-fca208a56d13292ba4ba85f3a9003fef36a89dbe_11">  11</a> </span><span class="LineAnchor" id="CA-fca208a56d13292ba4ba85f3a9003fef36a89dbe_11"></span><span class="anchor" id="line-11-5"></span>        <span class="ResWord">self</span>.<span class="ID">loadViewFromModel</span>()</span>
+</pre></div></div><span class="anchor" id="line-273"></span><span class="anchor" id="line-274"></span><p class="line862">Now all that remains to be done to update the <a class="nonexistent" href="https://wiki.wxpython.org/AlbumInteractor">AlbumInteractor</a> to provide the connection between button presses and our new functionality: <span class="anchor" id="line-275"></span><span class="anchor" id="line-276"></span></p><p class="line867"><span class="anchor" id="line-277"></span><span class="anchor" id="line-278"></span><span class="anchor" id="line-279"></span><span class="anchor" id="line-280"></span><span class="anchor" id="line-281"></span><span class="anchor" id="line-282"></span><span class="anchor" id="line-283"></span><span class="anchor" id="line-284"></span><span class="anchor" id="line-285"></span><span class="anchor" id="line-286"></span><span class="anchor" id="line-287"></span><span class="anchor" id="line-288"></span><span class="anchor" id="line-289"></span><span class="anchor" id="line-1-29"></span></p><div class="highlight python"><div class="codearea" dir="ltr" lang="en">
+<script type="text/javascript">
+document.write('<a href="#" onclick="return togglenumber(\'CA-091ce2573ee9ead6900ae0c540cae55d1dcd08e9\', 1, 1);" \
+                class="codenumbers">Toggle line numbers<\/a>');
+</script><a href="#" onclick="return togglenumber('CA-091ce2573ee9ead6900ae0c540cae55d1dcd08e9', 1, 1);" class="codenumbers">Toggle line numbers</a>
+<pre dir="ltr" id="CA-091ce2573ee9ead6900ae0c540cae55d1dcd08e9" lang="en"><span class="line"><span class="LineNumber"><a href="#CA-091ce2573ee9ead6900ae0c540cae55d1dcd08e9_1">   1</a> </span><span class="LineAnchor" id="CA-091ce2573ee9ead6900ae0c540cae55d1dcd08e9_1"></span><span class="anchor" id="line-1-30"></span><span class="ResWord">class</span> <span class="ID">AlbumInteractor</span>(<span class="ResWord">object</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-091ce2573ee9ead6900ae0c540cae55d1dcd08e9_2">   2</a> </span><span class="LineAnchor" id="CA-091ce2573ee9ead6900ae0c540cae55d1dcd08e9_2"></span><span class="anchor" id="line-2-15"></span>    <span class="ResWord">def</span> <span class="ID">Install</span>(<span class="ResWord">self</span>, <span class="ID">presenter</span>, <span class="ID">view</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-091ce2573ee9ead6900ae0c540cae55d1dcd08e9_3">   3</a> </span><span class="LineAnchor" id="CA-091ce2573ee9ead6900ae0c540cae55d1dcd08e9_3"></span><span class="anchor" id="line-3-15"></span>        ...</span>
+<span class="line"><span class="LineNumber"><a href="#CA-091ce2573ee9ead6900ae0c540cae55d1dcd08e9_4">   4</a> </span><span class="LineAnchor" id="CA-091ce2573ee9ead6900ae0c540cae55d1dcd08e9_4"></span><span class="anchor" id="line-4-15"></span>        <span class="ID">view</span>.<span class="ID">add</span>.<span class="ID">Bind</span>(<span class="ID">wx</span>.<span class="ID">EVT_BUTTON</span>, <span class="ResWord">self</span>.<span class="ID">OnAddNewAlbum</span>)</span>
+<span class="line"><span class="LineNumber"><a href="#CA-091ce2573ee9ead6900ae0c540cae55d1dcd08e9_5">   5</a> </span><span class="LineAnchor" id="CA-091ce2573ee9ead6900ae0c540cae55d1dcd08e9_5"></span><span class="anchor" id="line-5-15"></span>        <span class="ID">view</span>.<span class="ID">order</span>.<span class="ID">Bind</span>(<span class="ID">wx</span>.<span class="ID">EVT_BUTTON</span>, <span class="ResWord">self</span>.<span class="ID">OnToggleOrder</span>)</span>
+<span class="line"><span class="LineNumber"><a href="#CA-091ce2573ee9ead6900ae0c540cae55d1dcd08e9_6">   6</a> </span><span class="LineAnchor" id="CA-091ce2573ee9ead6900ae0c540cae55d1dcd08e9_6"></span><span class="anchor" id="line-6-14"></span>        </span>
+<span class="line"><span class="LineNumber"><a href="#CA-091ce2573ee9ead6900ae0c540cae55d1dcd08e9_7">   7</a> </span><span class="LineAnchor" id="CA-091ce2573ee9ead6900ae0c540cae55d1dcd08e9_7"></span><span class="anchor" id="line-7-11"></span>    <span class="ResWord">def</span> <span class="ID">OnAddNewAlbum</span>(<span class="ResWord">self</span>, <span class="ID">evt</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-091ce2573ee9ead6900ae0c540cae55d1dcd08e9_8">   8</a> </span><span class="LineAnchor" id="CA-091ce2573ee9ead6900ae0c540cae55d1dcd08e9_8"></span><span class="anchor" id="line-8-9"></span>        <span class="ResWord">self</span>.<span class="ID">presenter</span>.<span class="ID">addNewAlbum</span>()</span>
+<span class="line"><span class="LineNumber"><a href="#CA-091ce2573ee9ead6900ae0c540cae55d1dcd08e9_9">   9</a> </span><span class="LineAnchor" id="CA-091ce2573ee9ead6900ae0c540cae55d1dcd08e9_9"></span><span class="anchor" id="line-9-8"></span>        </span>
+<span class="line"><span class="LineNumber"><a href="#CA-091ce2573ee9ead6900ae0c540cae55d1dcd08e9_10">  10</a> </span><span class="LineAnchor" id="CA-091ce2573ee9ead6900ae0c540cae55d1dcd08e9_10"></span><span class="anchor" id="line-10-7"></span>    <span class="ResWord">def</span> <span class="ID">OnToggleOrder</span>(<span class="ResWord">self</span>, <span class="ID">evt</span>):</span>
+<span class="line"><span class="LineNumber"><a href="#CA-091ce2573ee9ead6900ae0c540cae55d1dcd08e9_11">  11</a> </span><span class="LineAnchor" id="CA-091ce2573ee9ead6900ae0c540cae55d1dcd08e9_11"></span><span class="anchor" id="line-11-6"></span>        <span class="ResWord">self</span>.<span class="ID">presenter</span>.<span class="ID">toggleOrder</span>()</span>
+</pre></div></div><span class="anchor" id="line-290"></span><span class="anchor" id="line-291"></span><p class="line874">All Done! <span class="anchor" id="line-292"></span>New version of the source code: <a class="attachment" href="https://wiki.wxpython.org/ModelViewPresenter?action=AttachFile&amp;do=view&amp;target=mvp2.zip" title="">mvp2.zip</a> <span class="anchor" id="line-293"></span><span class="anchor" id="line-294"></span></p><p class="line874">Remember!
+ When writing production code start in the unittests, this way you'll be
+ able to catch logic related errors early on, before they are altered by
+ the view part. <span class="anchor" id="line-295"></span><span class="anchor" id="bottom"></span></p></div><p id="pageinfo" class="info" dir="ltr" lang="en">ModelViewPresenter  (last edited 2009-11-25 07:00:09 by <span title="??? @ vpn-8061f451.host.ucla.edu[128.97.244.81]">vpn-8061f451</span>)</p>
+
+<div id="pagebottom"></div>
+</div>
+
+
+<div id="footer">
+<ul class="editbar"><li><span class="disabled">Immutable Page</span></li><li class="toggleCommentsButton" style="display:none;"><a href="#" class="nbcomment" onclick="toggleComments();return false;">Comments</a></li><li><a class="nbinfo" href="https://wiki.wxpython.org/action/info/ModelViewPresenter?action=info" rel="nofollow">Info</a></li><li><a class="nbattachments" href="https://wiki.wxpython.org/action/AttachFile/ModelViewPresenter?action=AttachFile" rel="nofollow">Attachments</a></li><li>
+<form class="actionsmenu" method="GET" action="/ModelViewPresenter">
+<div>
+    
+    <select name="action" onchange="if ((this.selectedIndex != 0) &amp;&amp;
+                      (this.options[this.selectedIndex].disabled == false)) {
+                this.form.submit();
+            }
+            this.selectedIndex = 0;">
+        <option value="show" selected="selected">More Actions:</option><option value="raw">Raw Text</option>
+<option value="print">Print View</option>
+<option value="RenderAsDocbook">Render as Docbook</option>
+<option value="refresh">Delete Cache</option>
+<option value="show" disabled="disabled" class="disabled">------------------------</option>
+<option value="SpellCheck">Check Spelling</option>
+<option value="LikePages">Like Pages</option>
+<option value="LocalSiteMap">Local Site Map</option>
+<option value="show" disabled="disabled" class="disabled">------------------------</option>
+<option value="RenamePage" disabled="disabled" class="disabled">Rename Page</option>
+<option value="DeletePage" disabled="disabled" class="disabled">Delete Page</option>
+<option value="show" disabled="disabled" class="disabled">------------------------</option>
+<option value="show" disabled="disabled" class="disabled">Subscribe User</option>
+<option value="show" disabled="disabled" class="disabled">------------------------</option>
+<option value="show" disabled="disabled" class="disabled">Remove Spam</option>
+<option value="show" disabled="disabled" class="disabled">Revert to this revision</option>
+<option value="PackagePages">Package Pages</option>
+<option value="SyncPages">Sync Pages</option>
+<option value="show" disabled="disabled" class="disabled">------------------------</option>
+<option value="Load">Load</option>
+<option value="Save">Save</option>
+<option value="SlideShow">SlideShow</option>
+    </select>
+    
+    
+</div>
+<script type="text/javascript">
+<!--// Init menu
+actionsMenuInit('More Actions:');
+//-->
+</script>
+</form>
+</li></ul>
+
+<ul id="credits">
+<li><a href="http://moinmo.in/" title="This site uses the MoinMoin Wiki software.">MoinMoin Powered</a></li><li><a href="http://moinmo.in/Python" title="MoinMoin is written in Python.">Python Powered</a></li><li><a href="http://moinmo.in/GPL" title="MoinMoin is GPL licensed.">GPL licensed</a></li><li><a href="http://validator.w3.org/check?uri=referer" title="Click here to validate this page.">Valid HTML 4.01</a></li>
+</ul>
+
+
+</div>
+<center><font size="-1"><font color="red">NOTE:</font> To edit pages in this wiki you must be a member of the <a href="https://wiki.wxpython.org/TrustedEditorsGroup">TrustedEditorsGroup</a>.</font></center>
+
+
+</body></html>

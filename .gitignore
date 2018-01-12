@@ -1,0 +1,7 @@
+/src/
+/bin/
+/lib/
+/pyvenv.cfg
+/pip-selfcheck.json
+__pycache__/
+.??*.sw?
